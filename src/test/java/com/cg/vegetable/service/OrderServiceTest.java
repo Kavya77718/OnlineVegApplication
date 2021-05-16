@@ -3,7 +3,7 @@ package com.cg.vegetable.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.Set;
+import java.util.Set; 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.cg.vegetable.module.OrderDet;
-import com.cg.vegetable.module.VegetableDTO;
+import com.cg.vegetable.module.Vegetable;
 
 
 @SpringBootTest
@@ -21,14 +21,17 @@ class OrderServiceTest {
 	
 	@Autowired
 	IOrderService ordService;
+	
+	@Autowired
+	IVegetableService vegService;
 
 	@Test
 	//@Disabled
 	void testAddOrder() {
 		OrderDet orderdet = new OrderDet(); 
-		VegetableDTO vegdto1 = new VegetableDTO(7,"Carrot","Vegetable","A",50.00,1);
-		VegetableDTO vegdto2 = new VegetableDTO(8,"BeetRoot","Vegetable","A",50.00,1);
-		VegetableDTO vegie =ordService.addVegetable(vegdto2);
+		Vegetable vegdto1 = new Vegetable(7,"Carrot","Vegetable","A",50.00,1);
+		Vegetable vegdto2 = new Vegetable(8,"BeetRoot","Vegetable","A",50.00,1);
+		Vegetable vegie =vegService.save(vegdto2);
 		orderdet.setOrderNo(1);
 		orderdet.setCustId(126);
 		orderdet.setOrderDate("2020-08-09");

@@ -1,10 +1,9 @@
 package com.cg.vegetable.service;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 import java.util.List;
 
 import com.cg.vegetable.module.OrderDet;
-import com.cg.vegetable.module.VegetableDTO;
 
 
 public interface IOrderService {
@@ -16,6 +15,5 @@ public interface IOrderService {
 	public List<OrderDet> viewOrderList(String orderDate);
 	public List<OrderDet> viewOrderList();
 	public OrderDet cancelOrder(int orderid);
-	public VegetableDTO addVegetable(VegetableDTO dto);
 
 }

@@ -8,7 +8,7 @@ import com.cg.vegetable.module.Vegetable;
 
 
 @Service
-public interface IVegetableService {
+public interface IVegetableService {  
 	public Vegetable save(Vegetable dto);
 
 	public Vegetable update(int vegId, Vegetable dto);

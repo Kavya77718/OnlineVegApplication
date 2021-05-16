@@ -8,28 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.vegetable.module.OrderDet;
-import com.cg.vegetable.module.VegetableDTO;
+import com.cg.vegetable.module.Vegetable;
 import com.cg.vegetable.repository.IOrderRepository;
 import com.cg.vegetable.repository.IVegetableRepository;
 
 
 @Service
 public class OrderServiceImpl implements IOrderService{
-
+ 
 	@Autowired
 	IOrderRepository iordr;
-	
-	@Autowired
-	IVegetableRepository irep;
-	
+
 	@Override
 	public OrderDet addOrder(OrderDet order) {
 		return iordr.save(order);
-	}
-
-	@Override
-	public VegetableDTO addVegetable(VegetableDTO dto) {
-		return irep.save(dto);
 	}
 
 	@Override
