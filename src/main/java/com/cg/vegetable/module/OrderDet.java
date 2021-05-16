@@ -15,14 +15,14 @@ import javax.persistence.OneToOne;
 public class OrderDet {
 	@Id
 	private int orderNo;
-	private int custId;
+	private int custId; 
 	private double totalAmount;
 	private String orderDate;
 	private String status;
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="Order_No")
-	private List<VegetableDTO> vegList;
+	private List<Vegetable> vegList;
 	/*
 	public OrderDet(int orderNo,int custId,List<VegetableDTO> vegList, double totalAmount,String orderDate,String status) {
 		super(); 
@@ -58,10 +58,10 @@ public class OrderDet {
 	public void setCustId(int custId) {
 		this.custId = custId;
 	}
-	public List<VegetableDTO> getVegList() {
+	public List<Vegetable> getVegList() {
 		return vegList; 
 	}
-	public void setVegList(List<VegetableDTO> vegList) {
+	public void setVegList(List<Vegetable> vegList) {
 		this.vegList = vegList;
 	} 
 	public double getTotalAmount() {
