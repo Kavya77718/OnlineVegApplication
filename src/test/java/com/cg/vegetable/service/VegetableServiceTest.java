@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,11 +39,11 @@ class VegetableServiceTest {
 
 	@Test
 	void testCreateVegetable() {
-		Vegetable vegetable = new Vegetable(4, "Cucumber", "Climber", 80, 25);
+		Vegetable vegetable = new Vegetable(10, "Cucumber", "Stem", 80, 25);
 		Vegetable persistedveg = es.save(vegetable);
-		assertEquals(4, persistedveg.getVegId());
+		assertEquals(10, persistedveg.getVegId());
 		assertEquals("Cucumber", persistedveg.getName());
-		assertEquals("Climber", persistedveg.getType());
+		assertEquals("Stem", persistedveg.getType());
 		assertEquals(80, persistedveg.getPrice());
 		assertEquals(25, persistedveg.getQuantity());
 	}

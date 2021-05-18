@@ -7,27 +7,37 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 
 public class Cart {
 	@Id
 	private int cartId;
-	private int custId;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name="cartId")
+	/*@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="vegId", referencedColumnName = "vegId")
 	private List<Vegetable> vegetables;
+	*/
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name="veg_Id", referencedColumnName = "vegId")
+	private List<Vegetable> vegetables;
+	
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "custId")
+	private Customer customer;
 
 	public Cart() {
 
 	}
 
-	public Cart(int cartId, int custId) {
+	public Cart(int cartId) {
 		super();
 		this.cartId = cartId;
-		this.custId = custId;
+		
 		
 
 	}
@@ -40,12 +50,12 @@ public class Cart {
 		this.cartId = cartId;
 	}
 
-	public int getCustId() {
-		return custId;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustId(int custId) {
-		this.custId = custId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public List<Vegetable> getVegetables() {
@@ -58,8 +68,15 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [cartId=" + cartId + ", custId=" + custId + ", vegetables=" + vegetables + "]";
+		return "Cart [cartId=" + cartId + ", vegetables=" + vegetables + ", customer="
+				+ customer + "]";
 	}
+
+
+	
+
+	
+	
 
 	
 	

@@ -13,6 +13,7 @@ public interface ICartService {
 	public Cart addToCart(Cart cart);
 	public List<Cart> viewAllItems();
 	public void removeAllItems();
+	/*public Cart calculateVegPriceBasedOnCustomerCartVegQuantity(int vegId, int customerId, int cartId, int quantity);*/
 	
 
 }

@@ -4,10 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Customer {
@@ -17,10 +14,13 @@ public class Customer {
 	private String mobileNumber;
 	private String emailId;
 
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="Address_id", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Address_id", referencedColumnName = "id")
 	private Address address;
 	
+
+	
+
 	public Customer(int customerId, String name, String mobileNumber, String emailId) {
 		this.customerId = customerId;
 		this.name = name;
@@ -34,7 +34,7 @@ public class Customer {
 	public Customer(int customerId) {
 		this.customerId = customerId;
 	}
-	
+
 	public Customer(Address address) {
 		this.address = address;
 	}
@@ -55,6 +55,8 @@ public class Customer {
 		this.name = name;
 	}
 
+	
+
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -70,8 +72,8 @@ public class Customer {
 	public void setEmailid(String emailId) {
 		this.emailId = emailId;
 	}
-	
-	//@JsonBackReference
+
+	// @JsonBackReference
 	public Address getAddress() {
 		return address;
 	}
@@ -86,5 +88,7 @@ public class Customer {
 				+ emailId + ", address=" + address + "]";
 	}
 
-}
+	
+	
 
+}

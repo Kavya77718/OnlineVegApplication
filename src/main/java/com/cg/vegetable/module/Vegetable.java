@@ -1,7 +1,14 @@
 package com.cg.vegetable.module;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Vegetable {
@@ -76,8 +83,10 @@ public void setQuantity(int quantity) {
 
 @Override
 public String toString() {
-	return "Vegetable [vegId=" + vegId + ", name=" + name + ", type=" + type + ", price=" + price + ", quantity="
-			+ quantity + "]";
+	return "Vegetable [vegId=" + vegId + ", name=" + name + ", type=" + type + ", category=" + category + ", price="
+			+ price + ", quantity=" + quantity + "]";
 }
 
+
 }
+
