@@ -18,7 +18,7 @@ class OrderServiceTest {
 	IVegetableService vegService;
 
 	@Test
-	//@Disabled
+	@Disabled
 	void testAddOrder() {
 		OrderDet orderdet = new OrderDet(); 
 		orderdet.setOrderNo(1);
@@ -34,7 +34,7 @@ class OrderServiceTest {
 		}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	public void testViewOrderById() {
 		OrderDet orderById = ordService.viewOrder(201);
 		System.out.println(orderById);	
@@ -43,18 +43,31 @@ class OrderServiceTest {
 	
 	}
 	@Test
-	//@Disabled
+	@Disabled
 	public void testupdateOrderDetails() {
 		OrderDet orderById = ordService.viewOrder(202);
 		orderById.setOrderDate("2020-08-10");
 		orderById.setStatus("Ordered");
 		OrderDet ordupdate = ordService.updateOrderDetails(orderById);
+
 		assertEquals("2020-08-10",ordupdate.getOrderDate());
 		assertEquals("Ordered", ordupdate.getStatus());
+
+		
+	
+	
+	
+	@Test
+	@Disabled
+	void testviewAllOrdersByCustId() {
+		List<OrderDet> ordbyCust = ordService.viewAllOrders(127);
+		System.out.println(ordbyCust);
+		assertEquals(2,ordbyCust.size());	
+
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	void testviewOrderListByDate() {
 		List<OrderDet> ordbyDate = ordService.viewOrderList("2020-08-01");
 		System.out.println(ordbyDate);
@@ -62,7 +75,7 @@ class OrderServiceTest {
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	void testviewOrderList() {
 		List<OrderDet> ordbyCust = ordService.viewOrderList();
 		assertEquals(6,ordbyCust.size());

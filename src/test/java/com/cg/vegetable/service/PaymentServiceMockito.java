@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
@@ -29,7 +30,7 @@ class PaymentServiceMockito {
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	public void testfindPaymentById() {
 		Payments payById = new Payments(23,"Cash on Delivery",2.00, 0.00, 300.00);
 		
@@ -43,7 +44,7 @@ class PaymentServiceMockito {
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	public void testsavePaymentDetails() {
 		Payments payById = new Payments(26,"Cash on Delivery",2.00, 0.00, 500.00);
 		
@@ -56,7 +57,7 @@ class PaymentServiceMockito {
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	public void testDeletePaymentById() {
 		Payments payById = new Payments(28,"Cash on Delivery",2.00, 0.00, 500.00);
 		
@@ -69,7 +70,7 @@ class PaymentServiceMockito {
 	}
 		
 	@Test
-	//@Disabled
+	@Disabled
 	void testFindAllPayments() {
 		Payments payById1 = new Payments(30,"Cash on Delivery",2.00, 0.00, 500.00);
 		Payments payById2 = new Payments(31,"Cash on Delivery",2.00, 0.00, 300.00);

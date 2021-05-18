@@ -1,6 +1,8 @@
 package com.cg.vegetable.module;
 
+
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +18,7 @@ public class OrderDet {
 	private double totalAmount;
 	private String orderDate;
 	private String status;
-	
+
 	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="Order_No")
 	private List<Vegetable> vegList;
@@ -37,6 +39,10 @@ public class OrderDet {
 	public OrderDet() {
 		
 	}
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="Order_No")
+	private List<Vegetable> vegList;
 
 	//Getters and setters
 	public int getOrderNo() {

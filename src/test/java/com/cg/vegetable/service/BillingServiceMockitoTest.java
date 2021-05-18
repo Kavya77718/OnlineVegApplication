@@ -32,7 +32,9 @@ class BillingServiceMockitoTest
 		}
 		
 		@Test
-		@Disabled
+
+	    @Disabled
+
 		void testShouldAddBill() {
 			BillingDetails bill = new BillingDetails(343,"COD","02-01-1997","SUCCESS");
 			Mockito.when(billingRepository.save(bill)).thenReturn(bill);

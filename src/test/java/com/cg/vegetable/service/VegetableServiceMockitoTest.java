@@ -40,7 +40,9 @@ class VegetableServiceMockitoTest {
 			assertEquals(6,vegetable.getVegId());
 		}
 		@Test
-		@Disabled
+
+        @Disabled
+
 		void viewAllVegetables() {
 			Vegetable d1=new Vegetable(1,"Carrot","Root",70,5);
 			Vegetable d2=new Vegetable(2,"Radish","Root",5,2);
@@ -56,10 +58,13 @@ class VegetableServiceMockitoTest {
 			l.add(d5);
 			Mockito.when(as.retrive()).thenReturn(l);
 			List<Vegetable>vegetablelist=as.retrive();
-			assertEquals(2,vegetablelist.size());
+			assertEquals(5,vegetablelist.size());
 		}
+  
 		@Test
-		//@Disabled
+
+		@Disabled
+
 		void testFindVegetableById() {
 			Vegetable r = new Vegetable(3,"Spinach","Leaves",10,2);
 			Mockito.when(are.findById(3)).thenReturn(Optional.of(r));
@@ -68,7 +73,9 @@ class VegetableServiceMockitoTest {
 
 		}
 		@Test
-		//@Disabled
+
+		@Disabled
+
 		void DeleteVegetableByIdTest() {
 			Vegetable d=new Vegetable(6, "Cucumber", "Climber", 80, 25);
 			Mockito.when(are.findById(6)).thenReturn(Optional.of(d));

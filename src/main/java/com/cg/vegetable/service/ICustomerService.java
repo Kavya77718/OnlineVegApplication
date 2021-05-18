@@ -7,8 +7,8 @@ import com.cg.vegetable.module.Customer;
 public interface ICustomerService {
 	public Customer addCustomer(Customer customer);
 	public Customer updateCustomer(Customer customer);
-	public Customer removeCustomer(Customer customer);
-	public Customer viewCustomer(Customer customer);
 	public List<Customer> viewCustomerList(String location);
+	public Customer viewCustomerbyId(int customerId);
+	public Customer deleteCustomerbyId(int customerId);
 
 }

@@ -15,20 +15,19 @@ public class Cart {
 	@Id
 	private int cartId;
 	private int custId;
-	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name="cartId")
-	private List<Vegetable> vegetables;
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "cartId")
+	private List<Vegetable> vegetables;
+	
 	public Cart() {
 
 	}
-
+	
 	public Cart(int cartId, int custId) {
 		super();
 		this.cartId = cartId;
 		this.custId = custId;
-		
 
 	}
 
@@ -60,8 +59,5 @@ public class Cart {
 	public String toString() {
 		return "Cart [cartId=" + cartId + ", custId=" + custId + ", vegetables=" + vegetables + "]";
 	}
-
-	
-	
 
 }

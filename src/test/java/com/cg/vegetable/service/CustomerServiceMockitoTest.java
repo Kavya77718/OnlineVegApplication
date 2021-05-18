@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,7 +54,30 @@ void testViewList() {
 	List<Customer> customerList = new ArrayList<>();
 	customerList.add(customer1);
 	customerList.add(customer2);
-	//Customer persistedCust = custService.viewCustomerList(customerList);
+	Mockito.when(custRep.viewCustomerList("chennai")).thenReturn(customerList);
+	List<Customer> persistedCust = custService.viewCustomerList("chennai");
 }
+
+
+@Test
+//@Disabled
+void testDeleteCustomerbyId() {
+	Customer customer = new Customer(1, "tommy", "951771122", "tom@gmail.com");
+	Mockito.when(custRep.findById(1)).thenReturn(Optional.of(customer));
+	custRep.deleteById(1);
+	Customer persistedCust = custService.deleteCustomerbyId(1);
+	assertEquals(1, persistedCust.getCustomerId());
+	assertEquals("tommy", persistedCust.getName());
+}
+
+@Test
+//@Disabled
+void testViewCustomerbyId() {
+	Customer customer = new Customer(1, "jen", "951771122", "tom@gmail.com");
+	Mockito.when(custRep.findById(1)).thenReturn(Optional.of(customer));
+	Customer persistedCust = custService.viewCustomerbyId(1);
+	assertEquals("jen", persistedCust.getName());
+}
+
 
 }
