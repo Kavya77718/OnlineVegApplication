@@ -11,8 +11,8 @@ import com.cg.vegetable.module.Customer;
 import com.cg.vegetable.repository.ICustomerRepository;
 
 @Service
-public class CustomerServiceImpl implements ICustomerService{
-	
+public class CustomerServiceImpl implements ICustomerService {
+
 	@Autowired
 	ICustomerRepository custRepo;
 
@@ -24,27 +24,11 @@ public class CustomerServiceImpl implements ICustomerService{
 	@Override
 	public Customer updateCustomer(Customer customer) {
 		Customer cus = custRepo.findById(customer.getCustomerId()).get();
-	    cus.setName(customer.getName());
-	    cus.setMobileNumber(customer.getMobileNumber());
-		cus.setEmailid(customer.getEmailId());
+		cus.setName(customer.getName());
+		cus.setMobileNumber(customer.getMobileNumber());
+		cus.setEmailId(customer.getEmailId());
 		cus.setAddress(customer.getAddress());
 		return custRepo.save(cus);
-	}
-
-	@Override
-	public Customer removeCustomer(Customer customer) {
-		Customer cus = custRepo.findById(customer.getCustomerId()).get();
-		custRepo.deleteById(customer.getCustomerId());
-		return cus;
-	}
-
-	@Override
-	public Customer viewCustomer(Customer customer) {
-		Optional<Customer> cus = custRepo.findById(customer.getCustomerId());
-		if(!cus.isPresent()) {
-			return null;
-		}
-		return cus.get();
 	}
 
 	@Override
@@ -52,6 +36,23 @@ public class CustomerServiceImpl implements ICustomerService{
 		return custRepo.viewCustomerList(location);
 	}
 
+	@Override
+	public Customer viewCustomerbyId(int customerId) {
+		Optional<Customer> cust = custRepo.findById(customerId);
+		if (!cust.isPresent()) {
+			return null;
+		}
+		return cust.get();
+	}
 
+	@Override
+	public Customer deleteCustomerbyId(int customerId) {
+		Optional<Customer> cust = custRepo.findById(customerId);
+		if (!cust.isPresent()) {
+			return null;
+		}
+		custRepo.deleteById(customerId);
+		return cust.get();
+	}
 
 }

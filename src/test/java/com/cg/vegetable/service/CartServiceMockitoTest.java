@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -33,6 +34,7 @@ class CartServiceMockitoTest {
 		MockitoAnnotations.openMocks(this);
 	}
 	@Test
+	@Disabled
 	void testAdd(){
 		Cart cart=new Cart(4, 103);
 		Mockito.when(cartrepo.save(cart)).thenReturn(cart);
@@ -40,6 +42,7 @@ class CartServiceMockitoTest {
 		assertEquals(4,vegetable.getCartId());
 	}
 	@Test
+	@Disabled
 	void viewAllItems() {
 		Cart d1=new Cart(1,100);
 		Cart d2=new Cart(2,101);

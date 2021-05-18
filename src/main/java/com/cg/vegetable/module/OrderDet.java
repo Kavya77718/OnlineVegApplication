@@ -1,15 +1,12 @@
 package com.cg.vegetable.module;
-import java.time.LocalDate;
 import java.util.List;
 
-import javax.annotation.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class OrderDet {
@@ -20,19 +17,6 @@ public class OrderDet {
 	private String orderDate;
 	private String status;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="Order_No")
-	private List<Vegetable> vegList;
-	/*
-	public OrderDet(int orderNo,int custId,List<VegetableDTO> vegList, double totalAmount,String orderDate,String status) {
-		super(); 
-		this.orderNo=orderNo;
-		this.custId=custId;
-		this.vegList=vegList;
-		this.totalAmount=totalAmount;
-		this.orderDate=orderDate;
-		this.status=status;
-	} */
 	public OrderDet(int orderNo,int custId, double totalAmount,String orderDate,String status) {
 		super();
 		this.orderNo=orderNo;
@@ -45,6 +29,10 @@ public class OrderDet {
 	public OrderDet() {
 		
 	}
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="Order_No")
+	private List<Vegetable> vegList;
 
 	public int getOrderNo() {
 		return orderNo;

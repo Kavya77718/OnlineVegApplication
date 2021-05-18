@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.cg.vegetable.controller.OrderErrorResponse;
+import com.cg.vegetable.module.OrderErrorResponse;
 
 @ControllerAdvice
 public class OrderExceptionHandling {

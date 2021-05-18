@@ -1,4 +1,4 @@
-package com.cg.onlineVegApp;
+package com.cg.vegetable;
 import org.apache.logging.log4j.LogManager;
 
 import org.springframework.boot.CommandLineRunner;
