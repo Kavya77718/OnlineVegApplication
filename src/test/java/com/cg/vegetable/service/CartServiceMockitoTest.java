@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -32,6 +33,7 @@ class CartServiceMockitoTest {
 		MockitoAnnotations.openMocks(this);
 	}
 	@Test
+	@Disabled
 	void testAdd(){
 		Cart cart=new Cart(6);
 		Mockito.when(cartrepo.save(cart)).thenReturn(cart);
@@ -39,6 +41,7 @@ class CartServiceMockitoTest {
 		assertEquals(6,vegetable.getCartId());
 	}
 	@Test
+	@Disabled
 	void viewAllItems() {
 		Cart d1=new Cart(1);
 		Cart d2=new Cart(2);
@@ -46,7 +49,6 @@ class CartServiceMockitoTest {
 		Cart d4=new Cart(4);
 		Cart d5=new Cart(5);
 		Cart d6=new Cart(6);
-		
 		List<Cart>l=new ArrayList<>();
 		l.add(d1);
 		l.add(d2);

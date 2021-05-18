@@ -15,6 +15,7 @@ public interface ICartService {
 	public List<Cart> viewAllItems();
 
 	public void removeAllItems();
+	/*public Cart calculateVegPriceBasedOnCustomerCartVegQuantity(int vegId, int customerId, int cartId, int quantity);*/
 	
 	public Vegetable UpdateVegQuantity(int vegId, int quantity);
 

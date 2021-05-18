@@ -1,4 +1,4 @@
-package com.cg.vegetable.controller;
+package com.cg.vegetable.module;
 
 public class OrderErrorResponse {
 	private int status;

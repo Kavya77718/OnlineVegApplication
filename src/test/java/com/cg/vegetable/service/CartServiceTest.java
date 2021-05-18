@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,7 @@ class CartServiceTest {
 	ICartService ic;
 
 	@Test
+	@Disabled
 	void testaddToCart() {
 		Cart cart = new Cart(3);
 		Cart persistedCust = ic.addToCart(cart);
@@ -25,6 +27,7 @@ class CartServiceTest {
 	}
 
 	@Test
+	@Disabled
 	void testviewAllItems() {
 		List<Cart> cart1 = ic.viewAllItems();
 		assertEquals(2, cart1.size());
@@ -35,5 +38,4 @@ class CartServiceTest {
 	void testremoveAllItems() {
 		ic.removeAllItems();
 	}
-
 }

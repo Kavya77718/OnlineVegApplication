@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.vegetable.module.Cart;
+
+import com.cg.vegetable.module.Customer;
+import com.cg.vegetable.module.OrderDet;
+
 import com.cg.vegetable.module.Vegetable;
 import com.cg.vegetable.repository.ICartRepository;
+import com.cg.vegetable.repository.ICustomerRepository;
 import com.cg.vegetable.repository.IVegetableRepository;
 
 @Service
@@ -19,6 +24,10 @@ public class CartServiceImpl implements ICartService {
 	
 	@Autowired
 	IVegetableRepository vegrepo;
+	
+	@Autowired
+	ICustomerRepository custrepo;
+
 
 	@Override
 	public Cart addToCart(Cart cart) {

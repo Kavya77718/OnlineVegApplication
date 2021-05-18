@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -39,6 +40,7 @@ class VegetableServiceMockitoTest {
 			assertEquals(7,vegetable.getVegId());
 		}
 		@Test
+        @Disabled
 		void viewAllVegetables() {
 			Vegetable d1=new Vegetable(1,"Radish","Root",10,5);
 			Vegetable d2=new Vegetable(2,"Brinjal","Root",55,15);
@@ -57,6 +59,7 @@ class VegetableServiceMockitoTest {
 			assertEquals(5,vegetablelist.size());
 		}
 		@Test
+		@Disabled
 		void testFindVegetableById() {
 			Vegetable r = new Vegetable(6,"Spinach","Leaves",10,2);
 			Mockito.when(are.findById(6)).thenReturn(Optional.of(r));
@@ -65,6 +68,7 @@ class VegetableServiceMockitoTest {
 
 		}
 		@Test
+		@Disabled
 		void DeleteVegetableByIdTest() {
 			Vegetable d=new Vegetable(7, "Cucumber", "Stem", 80, 25);
 			Mockito.when(are.findById(7)).thenReturn(Optional.of(d));

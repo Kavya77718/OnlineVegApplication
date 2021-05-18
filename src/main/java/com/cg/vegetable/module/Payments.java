@@ -33,8 +33,7 @@ public class Payments {
 	}
 
 	public Payments() {
-
-	}
+  }
 
 	public long getPaymentId() {
 		return paymentId;

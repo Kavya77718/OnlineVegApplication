@@ -20,6 +20,7 @@ public class CustomerServiceImplTest {
 
 	@Test
 	@Disabled
+
 	void testAddCustomer() {
 		Customer customer1 = new Customer(1, "Kavya", "886535214", "abcd@g.com");
 		Address address = new Address(1, 77, "home", "valasaravakkam", "chennai", "tamilnadu", "600087");
@@ -28,22 +29,16 @@ public class CustomerServiceImplTest {
 		assertEquals(1, persistedCust.getCustomerId());
 		assertEquals("chennai", persistedCust.getAddress().getLocation());
 	}
+		
 
+	
+		
 	@Test
 	@Disabled
-	void testViewCustomer() {
-		Customer customer1 = new Customer(1);
-		Customer persistedCust = custService.viewCustomer(customer1);
-		assertEquals("Kavya", persistedCust.getName());
-	}
+	void testDeleteCustomerId() {
+		Customer persistedCust = custService.deleteCustomerbyId(2);
+		assertEquals("Kavya",persistedCust.getName());
 
-	@Test
-	@Disabled
-	void testRemoveCustomer() {
-		Customer customer1 = new Customer(1);
-		Customer persistedCust = custService.removeCustomer(customer1);
-		assertEquals(1, persistedCust.getCustomerId());
-		assertEquals("Monisha", persistedCust.getName());
 	}
 
 	@Test
@@ -53,6 +48,7 @@ public class CustomerServiceImplTest {
 		customer1.setCustomerId(1);
 		customer1.setName("Shriya");
 		customer1.setMobileNumber("852963741");
+
 		customer1.setEmailid("abcd@gmail.com");
 		Address address = new Address(1, 89, "el", "kk nagar", "chennai", "TN", "600088");
 		customer1.setAddress(address);
@@ -65,7 +61,7 @@ public class CustomerServiceImplTest {
 	@Disabled
 	void testViewCustomerList() {
 		List<Customer> cust1 = custService.viewCustomerList("chennai");
-		assertEquals(0, cust1.size());
+		assertEquals(1, cust1.size());
 	}
 
 }

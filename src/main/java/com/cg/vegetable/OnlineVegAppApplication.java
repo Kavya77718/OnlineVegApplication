@@ -1,11 +1,4 @@
 package com.cg.vegetable;
-
-
-import org.apache.logging.log4j.LogManager;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import org.apache.logging.log4j.LogManager;
 
 import org.springframework.boot.CommandLineRunner;
@@ -22,17 +15,24 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication
-public class Vegetable {
+public class OnlineVegAppApplication {
 
 	org.apache.logging.log4j.Logger logger = LogManager.getLogger();
-
-
+	
 	public static void main(String[] args) {
-		SpringApplication.run(Vegetable.class, args);
+		SpringApplication.run(OnlineVegAppApplication.class, args);
+	}
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2)
+			.select()
+			.paths(PathSelectors.any())
+			.build();
+	}
+	
+	@Bean
+	CommandLineRunner cmdLineRunner(ICustomerRepository CustRepo) {
+		return args -> {
+	};
 	}
 
-	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.any()).build();
-
-}
 }

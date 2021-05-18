@@ -1,3 +1,4 @@
+
 package com.cg.vegetable.module;
 
 import javax.persistence.Entity;

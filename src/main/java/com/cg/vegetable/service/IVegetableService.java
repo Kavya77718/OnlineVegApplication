@@ -21,5 +21,4 @@ public interface IVegetableService {
 	public List<Vegetable> viewVegetableByName(String name);
 
 	public List<Vegetable> retrive();
-	
 }
