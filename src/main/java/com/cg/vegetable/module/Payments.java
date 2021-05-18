@@ -15,40 +15,29 @@ import javax.persistence.OneToOne;
 public class Payments {
 	@Id
 	@GeneratedValue
-    private	long paymentId;
-	private	String paymentType;
-	private  double itemTotal;
-	private	 double shippingFee;
+	private long paymentId;
+	private String paymentType;
+	private double itemTotal;
+	private double shippingFee;
 	private double totalPrice;
 	
-	@OneToMany(targetEntity = OrderDet.class,cascade = CascadeType.ALL)
-	@JoinColumn(name= "pay_Id",referencedColumnName = "paymentId ")
+	@OneToMany(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "pay_Id", referencedColumnName = "paymentId ")
 	private List<OrderDet> orders;
-	
-	/* public Payments(long paymentId, String paymentType, double itemTotal,
-			double shippingFee, double totalPrice, List<OrderDet> orders) {
+
+	public Payments(long paymentId, String paymentType, double itemTotal, double shippingFee, double totalPrice) {
 		super();
 		this.paymentId = paymentId;
 		this.paymentType = paymentType;
 		this.itemTotal = itemTotal;
 		this.shippingFee = shippingFee;
 		this.totalPrice = totalPrice;
-		this.orders = orders;
-	} */
-	public Payments(long paymentId, String paymentType, double itemTotal,
-			double shippingFee, double totalPrice) {
-		super();
-		this.paymentId = paymentId;
-		this.paymentType = paymentType;
-		this.itemTotal = itemTotal;
-		this.shippingFee = shippingFee;
-		this.totalPrice = totalPrice;
-	}
-	public Payments() {
-		
 	}
 
-public long getPaymentId() {
+	public Payments() {
+	}
+
+	public long getPaymentId() {
 		return paymentId;
 	}
 
@@ -101,5 +90,5 @@ public long getPaymentId() {
 		return "Payments [paymentId=" + paymentId + ", paymentType=" + paymentType + ", itemTotal=" + itemTotal
 				+ ", shippingFee=" + shippingFee + ", totalPrice=" + totalPrice + ", orders=" + orders + "]";
 	}
-	
+
 }

@@ -24,7 +24,7 @@ class PaymentServiceTest {
 	IPaymentService iservice;
 	
 	@Test
-	//@Disabled
+	@Disabled
 	public void testsavePaymentDetails() {
 		Payments payById = iservice.findPaymentById(25);
 		payById.setPaymentType("PhonePe");
@@ -38,7 +38,7 @@ class PaymentServiceTest {
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	public void testfindPaymentById() {
 		Payments findById = iservice.findPaymentById(26);
 		assertEquals(2.00,findById.getItemTotal());
@@ -47,7 +47,7 @@ class PaymentServiceTest {
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	void testFindAllPayments() {
 		List<Payments> payment= iservice.findAllPayments();
 		assertEquals(4,payment.size());

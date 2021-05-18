@@ -41,16 +41,16 @@ public class AddressServiceImplTest {
 	@Test
 	@Disabled
 	void testViewAddressbyId() {
-		Address addr=addrService.findAddressById(1);
+		Address addr=addrService.findAddressById(10);
 		System.out.println(addr);
-		assertEquals("valasaravakkam", addr.getArea());
+		assertEquals("nelk", addr.getArea());
 	}
 	
 	@Test
 	@Disabled
 	void testUpdateAddress() {
 		Address address=new Address();
-		address.setId(1);
+		address.setId(10);
 		address.setLocation("madurai");
 		Address addr=addrService.update(address);
 		assertEquals("madurai",addr.getLocation());

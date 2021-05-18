@@ -2,6 +2,8 @@ package com.cg.vegetable.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,40 +25,36 @@ public class CustomerController {
 
 	// add
 	@PostMapping("/customer")
-	public Customer addCustomer(@RequestBody Customer customer) {
+	public Customer addCustomer(@Valid @RequestBody Customer customer) {
 		return custService.addCustomer(customer);
 	}
 
-	/*// view
-	@GetMapping("/customer/{id}")
-	public Customer viewCustomer(@PathVariable("id") Customer customer) {
-		return custService.viewCustomer(customer);
-	}*/
-	
-	@GetMapping("/customer/{id}")
-	public Customer viewCustomer(@PathVariable("id") Customer customer) {
-		if(custService.viewCustomer(customer) == null) {
-			throw new CustomerNotFoundException("Employee not found with given id: "+customer.getCustomerId());
+	@GetMapping("/customer/id/{id}")
+	public Customer viewCustomerbyId(@PathVariable("id") int customerId) {
+		if (custService.viewCustomerbyId(customerId) == null) {
+			throw new CustomerNotFoundException("Customer not found with this id" + customerId);
 		}
-		return custService.viewCustomer(customer);
+		return custService.viewCustomerbyId(customerId);
 	}
 
 	// Update
 	@PutMapping("/customer/{id}")
-	public Customer updateCustomer(@PathVariable("id") int id, @RequestBody Customer customer1) {
+	public Customer updateCustomer(@PathVariable("id") int id, @Valid @RequestBody Customer customer1) {
 		return custService.updateCustomer(customer1);
 	}
 
-	// Delete
-	@DeleteMapping("/customer/{id}")
-	public Customer removeCustomer(@PathVariable("id") Customer customer) {
-		return custService.removeCustomer(customer);
+	// delete Customer by id
+	@DeleteMapping("/customer/id/{id}")
+	public Customer deleteCustomerbyId(@PathVariable("id") int customerId) {
+		if (custService.deleteCustomerbyId(customerId) == null) {
+			throw new CustomerNotFoundException("Customer not found with this id" + customerId);
+		}
+		return custService.deleteCustomerbyId(customerId);
 	}
-	
+
 	@GetMapping("/customerr/{location}")
 	public List<Customer> viewCustomerList(@PathVariable("location") String location) {
 		return custService.viewCustomerList(location);
 	}
 
 }
-

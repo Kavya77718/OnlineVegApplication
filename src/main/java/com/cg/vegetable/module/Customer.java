@@ -6,21 +6,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+
 @Entity
 public class Customer {
 	@Id
 	private int customerId;
 	private String name;
+	@NotEmpty(message = "Please enter your mobile number to proceed")
 	private String mobileNumber;
+	@Email
 	private String emailId;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Address_id", referencedColumnName = "id")
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="Address_id", referencedColumnName = "id")
 	private Address address;
-	
-
-	
-
+		
 	public Customer(int customerId, String name, String mobileNumber, String emailId) {
 		this.customerId = customerId;
 		this.name = name;
@@ -30,7 +35,7 @@ public class Customer {
 
 	public Customer() {
 	}
-
+	
 	public Customer(int customerId) {
 		this.customerId = customerId;
 	}
@@ -64,16 +69,15 @@ public class Customer {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-
+	
 	public String getEmailId() {
 		return emailId;
 	}
 
-	public void setEmailid(String emailId) {
+	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
 
-	// @JsonBackReference
 	public Address getAddress() {
 		return address;
 	}
@@ -87,8 +91,5 @@ public class Customer {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", mobileNumber=" + mobileNumber + ", emailId="
 				+ emailId + ", address=" + address + "]";
 	}
-
-	
-	
 
 }

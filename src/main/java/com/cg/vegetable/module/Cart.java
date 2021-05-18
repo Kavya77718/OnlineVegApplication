@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 public class Cart {
 	@Id
 	private int cartId;
+
 	
 	/*@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="vegId", referencedColumnName = "vegId")
@@ -30,16 +31,21 @@ public class Cart {
 	@JoinColumn(name = "custId")
 	private Customer customer;
 
+	private int custId;
+
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "cartId")
+	private List<Vegetable> vegetables;
+	
 	public Cart() {
 
 	}
 
+
 	public Cart(int cartId) {
 		super();
 		this.cartId = cartId;
-		
-		
-
 	}
 
 	public int getCartId() {
@@ -72,13 +78,3 @@ public class Cart {
 				+ customer + "]";
 	}
 
-
-	
-
-	
-	
-
-	
-	
-
-}
