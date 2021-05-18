@@ -18,7 +18,6 @@ public class PaymentServiceImpl implements IPaymentService{
 	@Override
 	public Payments addPayment(Payments payment) {
 		return payRepo.save(payment);
-	
 	}
 
 	@Override

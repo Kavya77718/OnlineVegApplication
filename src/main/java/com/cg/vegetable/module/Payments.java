@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Payments {
@@ -25,16 +23,7 @@ public class Payments {
 	@JoinColumn(name= "pay_Id",referencedColumnName = "paymentId ")
 	private List<OrderDet> orders;
 	
-	/* public Payments(long paymentId, String paymentType, double itemTotal,
-			double shippingFee, double totalPrice, List<OrderDet> orders) {
-		super();
-		this.paymentId = paymentId;
-		this.paymentType = paymentType;
-		this.itemTotal = itemTotal;
-		this.shippingFee = shippingFee;
-		this.totalPrice = totalPrice;
-		this.orders = orders;
-	} */
+	//parameterized constructor
 	public Payments(long paymentId, String paymentType, double itemTotal,
 			double shippingFee, double totalPrice) {
 		super();
@@ -44,11 +33,14 @@ public class Payments {
 		this.shippingFee = shippingFee;
 		this.totalPrice = totalPrice;
 	}
+	
+	//default constructor
 	public Payments() {
 		
 	}
 
-public long getPaymentId() {
+	//Getters and setters
+	public long getPaymentId() {
 		return paymentId;
 	}
 
@@ -96,6 +88,7 @@ public long getPaymentId() {
 		this.orders = orders;
 	}
 
+	//Generate toString
 	@Override
 	public String toString() {
 		return "Payments [paymentId=" + paymentId + ", paymentType=" + paymentType + ", itemTotal=" + itemTotal

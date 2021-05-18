@@ -19,7 +19,7 @@ public class CustomerServiceImplTest {
 	ICustomerService custService;
 	
 	@Test
-	@Disabled
+	//@Disabled
 	void  testAddCustomer() {
 		Customer customer1 = new Customer(1,"Kavya", "886535214", "abcd@g.com");
 		Address address = new Address(1, 77, "home", "valasaravakkam", "chennai", "tamilnadu", "600087");

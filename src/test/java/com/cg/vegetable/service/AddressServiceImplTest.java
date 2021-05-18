@@ -17,7 +17,7 @@ public class AddressServiceImplTest {
 	IAddressService addrService;
 
 	@Test
-	@Disabled
+	//@Disabled
 	void testAddCustomer() {
 		Address address = new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 		Address persistedCust = addrService.save(address);

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -43,7 +42,7 @@ void testAddCustomer() {
 }
 
 @Test
-@Disabled
+//@Disabled
 void testViewList() {
 	Customer customer1 = new Customer(7, "Ad", "7890654", "ad@g.com");
 	Customer customer2 = new Customer(8, "rian", "123456", "rian@g.com");

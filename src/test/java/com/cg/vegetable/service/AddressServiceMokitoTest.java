@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,7 +30,7 @@ public class AddressServiceMokitoTest {
 	}
 	
 	@Test
-	@Disabled
+	//@Disabled
 	void testAddAddress(){
 		Address address=new Address(6, 9, "ak", "kk road", "Bangalore", "TN", "98");
 		Mockito.when(addrRep.save(address)).thenReturn(address);
@@ -50,7 +49,7 @@ public class AddressServiceMokitoTest {
 	}
 	
 	@Test 
-	@Disabled
+	//@Disabled
 	void testupdateAddress() {
 		Address address=new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 		Mockito.when(addrRep.findById(4)).thenReturn(Optional.of(address));
@@ -60,7 +59,7 @@ public class AddressServiceMokitoTest {
 	}
 	
 	@Test
-	@Disabled
+	//@Disabled
 	void testViewAddress() {
 		Address address1=new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 		Address address2=new Address(5, 7, "aj", "kk road", "chennai", "TN", "99");
@@ -74,7 +73,7 @@ public class AddressServiceMokitoTest {
 	}
 	
 	@Test
-	@Disabled
+	//@Disabled
 	void testViewbyId() {
 	Address address=new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 	Mockito.when(addrRep.findById(4)).thenReturn(Optional.of(address));

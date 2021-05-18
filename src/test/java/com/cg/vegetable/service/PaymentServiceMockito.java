@@ -4,22 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import com.cg.vegetable.module.Payments;
 import com.cg.vegetable.repository.IPaymentRepository;
-
 
 @SpringBootTest
 class PaymentServiceMockito {
@@ -44,8 +37,8 @@ class PaymentServiceMockito {
 		
 		Payments pay = serviceimpl.findPaymentById(23);
 		
-		assertEquals(23,payById.getPaymentId());
-		assertEquals(2.00, payById.getItemTotal());
+		assertEquals(23,pay.getPaymentId());
+		assertEquals(2.00, pay.getItemTotal());
 	
 	}
 	
@@ -88,7 +81,6 @@ class PaymentServiceMockito {
 		Mockito.when(iordrep.findAll()).thenReturn(allOrders);
 		
 		List<Payments> orderList = serviceimpl.findAllPayments();
-		
 		assertEquals(2,orderList.size());
 	}
 	 

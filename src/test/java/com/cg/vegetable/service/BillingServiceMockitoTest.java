@@ -32,7 +32,7 @@ class BillingServiceMockitoTest
 		}
 		
 		@Test
-	
+		@Disabled
 		void testShouldAddBill() {
 			BillingDetails bill = new BillingDetails(343,"COD","02-01-1997","SUCCESS");
 			Mockito.when(billingRepository.save(bill)).thenReturn(bill);
@@ -45,7 +45,7 @@ class BillingServiceMockitoTest
 		}
 		
 		@Test
-	 
+		@Disabled
 		void testShouldUpdateBill() {
 			BillingDetails bill= new BillingDetails(344,"DebitCard","02-01-1999","FAILED");
 		    Mockito.when(billingRepository.findById(344)).thenReturn(Optional.of(bill));
@@ -57,6 +57,7 @@ class BillingServiceMockitoTest
 		}
 		
 		@Test
+		@Disabled
 		void testShouldViewById() {
 			BillingDetails bill = new BillingDetails(345,"DebitCard","02-01-1999","SUCCESS");
 			
@@ -69,7 +70,7 @@ class BillingServiceMockitoTest
 		}
 		
 	@Test
-
+	@Disabled
 	void testShouldDeleteBill() 
 	{
 			BillingDetails bill= new BillingDetails(341,"COD","31/04/1993","SUCCESS");

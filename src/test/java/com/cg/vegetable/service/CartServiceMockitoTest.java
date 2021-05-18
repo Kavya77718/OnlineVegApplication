@@ -17,8 +17,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.cg.vegetable.module.Cart;
 import com.cg.vegetable.repository.ICartRepository;
 
-
-
 @ExtendWith(SpringExtension.class)
 class CartServiceMockitoTest {
 
@@ -33,6 +31,7 @@ class CartServiceMockitoTest {
 		MockitoAnnotations.openMocks(this);
 	}
 	@Test
+	//@Disabled
 	void testAdd(){
 		Cart cart=new Cart(4, 103);
 		Mockito.when(cartrepo.save(cart)).thenReturn(cart);
@@ -40,6 +39,7 @@ class CartServiceMockitoTest {
 		assertEquals(4,vegetable.getCartId());
 	}
 	@Test
+	//@Disabled
 	void viewAllItems() {
 		Cart d1=new Cart(1,100);
 		Cart d2=new Cart(2,101);

@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.cg.vegetable.exception.PaymentNotFoundException;
 import com.cg.vegetable.module.Payments;
 import com.cg.vegetable.service.IPaymentService;
-
 
 @RestController
 public class PaymentController {
@@ -34,11 +32,13 @@ public class PaymentController {
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 	
+	//Adding payment
 	@PostMapping("/payments") 
 	public Payments addPayment(@RequestBody Payments payment) {
 		return payService.addPayment(payment);
 	}
 	
+	//Get payment by passing payment id
 	@GetMapping("/payments/id/{id}")
 	public Payments findPaymentById(@PathVariable("id") int paymentId) {
 		if(payService.findPaymentById(paymentId) == null) {
@@ -47,11 +47,13 @@ public class PaymentController {
 		return payService.findPaymentById(paymentId);
 	}
 	
+	//Get list of payments
 	@GetMapping("/payments")
 	public List<Payments> findAllPayments(){
 		return payService.findAllPayments();
 	}
 	
+	//Update payment details
 	@PutMapping("/payments/{id}")
 	 public Payments save(@PathVariable("id") int paymentId, @RequestBody Payments payment) {
 		if(payService.save(payment)==null) {
@@ -60,6 +62,7 @@ public class PaymentController {
 		return payService.save(payment);
 	}
 	
+	//delete payment
 	@DeleteMapping("/payments/{id}")
 	public Payments deletePaymentById(@PathVariable("id") int paymentId) {
 		if(payService.deletePaymentById(paymentId) == null) {
