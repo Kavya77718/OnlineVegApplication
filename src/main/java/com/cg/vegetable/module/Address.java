@@ -1,15 +1,7 @@
 package com.cg.vegetable.module;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Address {
@@ -21,13 +13,12 @@ public class Address {
 	private String location;
 	private String state;
 	private String pincode;
-	
-	//@OneToOne(mappedBy = "address")
-	//private Customer customer;
-		
-	public Address() {}
 
-	public Address(int id, int flatNo, String buildingName, String area, String location, String state, String pincode) {
+	public Address() {
+	}
+
+	public Address(int id, int flatNo, String buildingName, String area, String location, String state,
+			String pincode) {
 		super();
 		this.id = id;
 		this.flatNo = flatNo;
@@ -37,7 +28,7 @@ public class Address {
 		this.state = state;
 		this.pincode = pincode;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -93,20 +84,11 @@ public class Address {
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
-	
-	/*@JsonManagedReference
-	public Customer getCustomer() {
-		return customer;
-	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-*/
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", flatNo=" + flatNo + ", buildingName=" + buildingName + ", area=" + area
 				+ ", location=" + location + ", state=" + state + ", pincode=" + pincode + "]";
 	}
-	
+
 }

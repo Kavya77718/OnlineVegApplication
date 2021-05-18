@@ -12,72 +12,73 @@ public class Vegetable {
 	private String category;
 	private double price;
 	private int quantity;
-	
-public Vegetable() {}
 
-public Vegetable(int vegId, String name, String type, double price, int quantity) {
-	super();
-	this.vegId = vegId; 
-	this.name = name;
-	this.type = type;
-	this.price = price;
-	this.quantity = quantity;
-}
-public Vegetable(int vegId, String name, String type,String category, double price, int quantity) {
-	super();
-	this.vegId = vegId;
-	this.name = name;
-	this.type = type;
-	this.price = price;
-	this.quantity = quantity;
-	this.category=category;
-}
+	public Vegetable() {
+	}
 
+	public Vegetable(int vegId, String name, String type, double price, int quantity) {
+		super();
+		this.vegId = vegId;
+		this.name = name;
+		this.type = type;
+		this.price = price;
+		this.quantity = quantity;
+	}
 
-public int getVegId() {
-	return vegId;
-}
+	public Vegetable(int vegId, String name, String type, String category, double price, int quantity) {
+		super();
+		this.vegId = vegId;
+		this.name = name;
+		this.type = type;
+		this.price = price;
+		this.quantity = quantity;
+		this.category = category;
+	}
 
-public void setVegId(int vegId) {
-	this.vegId = vegId;
-}
+	public int getVegId() {
+		return vegId;
+	}
 
-public String getName() {
-	return name;
-}
+	public void setVegId(int vegId) {
+		this.vegId = vegId;
+	}
 
-public void setName(String name) {
-	this.name = name;
-}
+	public String getName() {
+		return name;
+	}
 
-public String getType() {
-	return type;
-}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-public void setType(String type) {
-	this.type = type;
-}
+	public String getType() {
+		return type;
+	}
 
-public double getPrice() {
-	return price;
-}
+	public void setType(String type) {
+		this.type = type;
+	}
 
-public void setPrice(double price) {
-	this.price = price;
-}
+	public double getPrice() {
+		return price;
+	}
 
-public int getQuantity() {
-	return quantity;
-}
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
-public void setQuantity(int quantity) {
-	this.quantity = quantity;
-}
+	public int getQuantity() {
+		return quantity;
+	}
 
-@Override
-public String toString() {
-	return "Vegetable [vegId=" + vegId + ", name=" + name + ", type=" + type + ", price=" + price + ", quantity="
-			+ quantity + "]";
-}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "Vegetable [vegId=" + vegId + ", name=" + name + ", type=" + type + ", category=" + category + ", price="
+				+ price + ", quantity=" + quantity + "]";
+	}
 
 }
