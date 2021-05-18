@@ -36,7 +36,7 @@ class CartServiceMockitoTest {
 	@Test
 	@Disabled
 	void testAdd(){
-		Cart cart=new Cart(4, 103);
+		Cart cart=new Cart(4);
 		Mockito.when(cartrepo.save(cart)).thenReturn(cart);
 		Cart vegetable=cartser.addToCart(cart);
 		assertEquals(4,vegetable.getCartId());
@@ -44,9 +44,9 @@ class CartServiceMockitoTest {
 	@Test
 	@Disabled
 	void viewAllItems() {
-		Cart d1=new Cart(1,100);
-		Cart d2=new Cart(2,101);
-		Cart d3=new Cart(3,102);
+		Cart d1=new Cart(1);
+		Cart d2=new Cart(2);
+		Cart d3=new Cart(3);
 		
 		List<Cart>l=new ArrayList<>();
 		l.add(d1);

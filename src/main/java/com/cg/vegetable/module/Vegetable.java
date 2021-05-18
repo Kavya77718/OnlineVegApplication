@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Vegetable {
@@ -20,6 +22,7 @@ public class Vegetable {
 	private String category;
 	private double price;
 	private int quantity;
+
 
 	@OneToMany(mappedBy= "vegetable")
 	@JsonIgnore
@@ -103,3 +106,4 @@ public class Vegetable {
 	
 
 }
+

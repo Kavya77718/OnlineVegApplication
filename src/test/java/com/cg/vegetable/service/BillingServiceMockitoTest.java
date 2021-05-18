@@ -1,9 +1,7 @@
 package com.cg.vegetable.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -18,18 +16,18 @@ import com.cg.vegetable.module.BillingDetails;
 import com.cg.vegetable.repository.IBillingRepository;
 
 @ExtendWith(SpringExtension.class)
-class BillingServiceMockitoTest 
-    {
-		@InjectMocks
-		BillingService billingService;
-		
-		@MockBean
-		IBillingRepository billingRepository;
-		
-		@BeforeEach
-		void init() {
-			MockitoAnnotations.openMocks(this);
-		}
+
+class BillingServiceMockitoTest {
+	@InjectMocks
+	BillingService billingService;
+
+	@MockBean
+	IBillingRepository billingRepository;
+
+	@BeforeEach
+	void init() {
+		MockitoAnnotations.openMocks(this);
+	}
 		
 		@Test
 	    @Disabled
@@ -80,5 +78,5 @@ class BillingServiceMockitoTest
 			assertEquals(341,persistedBillingDetails.getBillingId());
 			assertEquals("SUCCESS",persistedBillingDetails.getTransactionStatus())	;
 	}
-	}
 
+	

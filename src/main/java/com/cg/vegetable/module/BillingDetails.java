@@ -2,13 +2,23 @@ package com.cg.vegetable.module;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
-@Table(name = "billtab")
+
 public class BillingDetails {
 	@Id
 	private int billingId;
+
+	@OneToOne(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "order_id", referencedColumnName = "orderNo")
+	private OrderDet order;
+	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_id", referencedColumnName = "customerId")
+	private Customer customer;
+
 	private String transactionMode;
 	private String transactionDate;
 	private String transactionStatus;
@@ -31,6 +41,24 @@ public class BillingDetails {
 	public void setBillingId(int billingId) {
 		this.billingId = billingId;
 	}
+
+
+	public OrderDet getOrder() {
+		return order;
+	}
+
+	public void setOrder(OrderDet order) {
+		this.order = order;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 
 	public String getTransactionMode() {
 		return transactionMode;
@@ -58,9 +86,9 @@ public class BillingDetails {
 
 	@Override
 	public String toString() {
-		return "BillingDetails [billingId=" + billingId + ", transactionMode=" + transactionMode + ", transactionDate="
-				+ transactionDate + ", transactionStatus=" + transactionStatus + "]";
-	}
-}
 
+		return "BillingDetails [billingId=" + billingId + ", order=" + order + ", customer=" + customer
+				+ ", transactionMode=" + transactionMode + ", transactionDate=" + transactionDate
+				+ ", transactionStatus=" + transactionStatus + "]";
+	}
 

@@ -20,7 +20,7 @@ class CartServiceTest {
 	@Test
 	@Disabled
 	void testaddToCart() {
-		Cart cart = new Cart(3, 102);
+		Cart cart = new Cart(3);
 		Cart persistedCust = ic.addToCart(cart);
 		assertEquals(3,persistedCust.getCartId());
 		
@@ -33,11 +33,11 @@ class CartServiceTest {
 		
 	}
 	
-	/*@Test
-	void testremoveById() {
-		Cart cart2=ic.removeAllItems();
-		assertEquals(1, cart2.size());
+	@Test
+	void testremoveAllItems () {
+	    ic.removeAllItems();
+		//assertEquals(1, cart2.size());
 	}
-*/
 	
 }
+

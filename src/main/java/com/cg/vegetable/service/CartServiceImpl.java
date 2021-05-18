@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.vegetable.module.Cart;
+import com.cg.vegetable.module.Customer;
+import com.cg.vegetable.module.OrderDet;
+import com.cg.vegetable.module.Vegetable;
 import com.cg.vegetable.repository.ICartRepository;
+import com.cg.vegetable.repository.ICustomerRepository;
 import com.cg.vegetable.repository.IVegetableRepository;
 
 
@@ -20,6 +24,9 @@ public class CartServiceImpl implements ICartService {
 	
 	@Autowired
 	IVegetableRepository vrt;
+	
+	@Autowired
+	ICustomerRepository custrepo;
 
 	@Override
 	public Cart addToCart(Cart cart) {
@@ -33,9 +40,31 @@ public class CartServiceImpl implements ICartService {
 
 	@Override
 	public void removeAllItems() {
-		crtRepo.deleteAll();
+		
+		 crtRepo.deleteAll();
 	}
+/*
+	@Override
+	public Cart calculateVegPriceBasedOnCustomerCartVegQuantity(int vegId, int customerId, int cartId, int quantity) {
+		
+		Optional<Cart> opt = crtRepo.findById(cartId);
+		Optional<Vegetable> vege = vrt.findById(vegId);
+		Optional<Customer> cust = custrepo.findById(customerId);
+		if (!opt.isPresent()) {
+			return null;
+		}
+		Vegetable dbveg = vege.get();
+		Customer dbcust = cust.get();
+		Cart cart = opt.get();
+		Customer customer = cart.getCustomer(); 
 
+		double totalCost = (OrderDet.class*distance)+vehicle.getFixedCharges();
+		booking.setTotalCost(totalCost);
+		return bokRepo.save(booking);
+		
+	}
+}
+		return null;*/
 	
 
 	
