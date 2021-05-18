@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.cg.vegetable.module.BillingDetails;
 
 @Repository
-public interface IBillingRepository extends JpaRepository<BillingDetails, Integer> {
+public interface IBillingRepository extends JpaRepository<BillingDetails,Integer> {
 
 }

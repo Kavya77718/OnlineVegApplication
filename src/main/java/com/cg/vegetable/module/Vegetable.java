@@ -1,17 +1,8 @@
+
 package com.cg.vegetable.module;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 public class Vegetable {
@@ -23,11 +14,6 @@ public class Vegetable {
 	private double price;
 	private int quantity;
 
-
-	@OneToMany(mappedBy= "vegetable")
-	@JsonIgnore
-	private List<Feedback> feedback;
-	
 	public Vegetable() {
 	}
 
@@ -89,21 +75,11 @@ public class Vegetable {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	public List<Feedback> getFeedback() {
-		return feedback;
-	}
-
-	public void setFeedback(List<Feedback> feedback) {
-		this.feedback = feedback;
-	}
 
 	@Override
 	public String toString() {
 		return "Vegetable [vegId=" + vegId + ", name=" + name + ", type=" + type + ", category=" + category + ", price="
-				+ price + ", quantity=" + quantity + ", feedback=" + feedback + "]";
+				+ price + ", quantity=" + quantity + "]";
 	}
-	
 
 }
-

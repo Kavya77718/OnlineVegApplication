@@ -79,11 +79,3 @@ public class VegetableController {
 
 	}
 
-	@PostMapping("/vegetable/add/{vegid}/{custid}/{cartid}")
-	public Vegetable addVegToCustomerCart(@PathVariable ("vegid") int vegId ,@RequestBody Vegetable vegetable ,@PathVariable ("custid") int customerId, @RequestBody Cart cart ,@PathVariable ("cartid") int cartId,@RequestBody Customer customer) {
-
-		return vegsev.addVegToCustomerCart(vegId, customerId, cartId);
-
-	}
-
-}

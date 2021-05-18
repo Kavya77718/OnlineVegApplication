@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.vegetable.module.Cart;
+
 import com.cg.vegetable.module.Customer;
 import com.cg.vegetable.module.OrderDet;
+
 import com.cg.vegetable.module.Vegetable;
 import com.cg.vegetable.repository.ICartRepository;
 import com.cg.vegetable.repository.ICustomerRepository;
 import com.cg.vegetable.repository.IVegetableRepository;
-
-
 
 @Service
 public class CartServiceImpl implements ICartService {
@@ -23,10 +23,11 @@ public class CartServiceImpl implements ICartService {
 	ICartRepository crtRepo;
 	
 	@Autowired
-	IVegetableRepository vrt;
+	IVegetableRepository vegrepo;
 	
 	@Autowired
 	ICustomerRepository custrepo;
+
 
 	@Override
 	public Cart addToCart(Cart cart) {
@@ -40,32 +41,21 @@ public class CartServiceImpl implements ICartService {
 
 	@Override
 	public void removeAllItems() {
-		
-		 crtRepo.deleteAll();
+
+		crtRepo.deleteAll();
 	}
-/*
+
 	@Override
-	public Cart calculateVegPriceBasedOnCustomerCartVegQuantity(int vegId, int customerId, int cartId, int quantity) {
-		
-		Optional<Cart> opt = crtRepo.findById(cartId);
-		Optional<Vegetable> vege = vrt.findById(vegId);
-		Optional<Customer> cust = custrepo.findById(customerId);
-		if (!opt.isPresent()) {
+	public Vegetable UpdateVegQuantity(int vegId, int quantity) {
+		Optional<Vegetable> vegetable = vegrepo.findById(vegId);
+		if(!vegetable.isPresent()) {
 			return null;
 		}
-		Vegetable dbveg = vege.get();
-		Customer dbcust = cust.get();
-		Cart cart = opt.get();
-		Customer customer = cart.getCustomer(); 
-
-		double totalCost = (OrderDet.class*distance)+vehicle.getFixedCharges();
-		booking.setTotalCost(totalCost);
-		return bokRepo.save(booking);
+		Vegetable veg = vegetable.get();
+		veg.getQuantity();
+		veg.setQuantity(quantity);
 		
+		return vegrepo.save(veg);
 	}
-}
-		return null;*/
-	
 
-	
 }

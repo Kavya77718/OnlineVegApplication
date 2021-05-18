@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Payments {
@@ -20,7 +18,7 @@ public class Payments {
 	private double itemTotal;
 	private double shippingFee;
 	private double totalPrice;
-	
+
 	@OneToMany(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "pay_Id", referencedColumnName = "paymentId ")
 	private List<OrderDet> orders;
@@ -35,7 +33,7 @@ public class Payments {
 	}
 
 	public Payments() {
-	}
+  }
 
 	public long getPaymentId() {
 		return paymentId;

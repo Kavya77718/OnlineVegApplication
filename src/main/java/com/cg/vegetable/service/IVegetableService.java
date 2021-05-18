@@ -21,10 +21,4 @@ public interface IVegetableService {
 	public List<Vegetable> viewVegetableByName(String name);
 
 	public List<Vegetable> retrive();
-
-	public Vegetable addVegToCustomerCart(int vegId, int customerId, int cartId);
-
-	/*public Vegetable removeVegFromCustomerCart(int vegId, int customerId, int cartId);
-
-	public Vegetable updateCustomerCartVegQuantity(int vegId, int customerId, int cartId, int quantity);*/
 }

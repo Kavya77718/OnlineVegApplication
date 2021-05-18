@@ -12,7 +12,8 @@ import com.cg.vegetable.repository.IBillingRepository;
 public class BillingService implements IBillingService {
 
 	@Autowired
-	IBillingRepository billRepo;
+ 	IBillingRepository billRepo;  
+
 
 	@Override
 	public BillingDetails addBill(BillingDetails bill) {

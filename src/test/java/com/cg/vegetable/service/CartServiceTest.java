@@ -16,28 +16,26 @@ class CartServiceTest {
 
 	@Autowired
 	ICartService ic;
-	
+
 	@Test
 	@Disabled
 	void testaddToCart() {
 		Cart cart = new Cart(3);
 		Cart persistedCust = ic.addToCart(cart);
-		assertEquals(3,persistedCust.getCartId());
-		
+		assertEquals(3, persistedCust.getCartId());
+
 	}
+
 	@Test
 	@Disabled
 	void testviewAllItems() {
-		List<Cart> cart1=ic.viewAllItems();
+		List<Cart> cart1 = ic.viewAllItems();
 		assertEquals(2, cart1.size());
-		
-	}
-	
-	@Test
-	void testremoveAllItems () {
-	    ic.removeAllItems();
-		//assertEquals(1, cart2.size());
-	}
-	
-}
 
+	}
+
+	@Test
+	void testremoveAllItems() {
+		ic.removeAllItems();
+	}
+}
