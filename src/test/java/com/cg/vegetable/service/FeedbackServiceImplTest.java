@@ -22,6 +22,7 @@ public class FeedbackServiceImplTest {
 	
 	@Test
 	@Disabled
+	//add feedback
 	void  testAddFeedback() {
 		Feedback feedback = new Feedback(5, 10, "good");
 		Customer customer1 = new Customer(1,"Kavya", "886535214", "abcd@g.com");
@@ -32,6 +33,7 @@ public class FeedbackServiceImplTest {
 	
 	@Test
 	@Disabled
+	//view feedback by customer id
 	void testViewFeedback() {
 		List<Feedback> feed = feedService.viewFeedback(1);
 		assertEquals(2, feed.size());
@@ -39,6 +41,7 @@ public class FeedbackServiceImplTest {
 	
 	@Test
 	@Disabled
+	// view feedback by veg id
 	void testViewAllFeedback() {
 		List<Feedback> feed = feedService.viewAllFeedbacks(20);
 		assertEquals(1, feed.size());

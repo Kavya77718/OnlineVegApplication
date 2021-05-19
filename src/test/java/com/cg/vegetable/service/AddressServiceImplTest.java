@@ -18,6 +18,7 @@ public class AddressServiceImplTest {
 
 	@Test
 	@Disabled
+	// add customer
 	void testAddCustomer() {
 		Address address = new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 		Address persistedCust = addrService.save(address);
@@ -26,6 +27,7 @@ public class AddressServiceImplTest {
 
 	@Test
 	@Disabled
+	// delete customer by id
 	void testDeleteAddressId() {
 		Address addr = addrService.deleteAddressById(4);
 		assertEquals(4, addr.getId());
@@ -33,6 +35,7 @@ public class AddressServiceImplTest {
 	
 	@Test
 	@Disabled
+	//find list of addresses
 	void testFindAllAddress() {
 		List<Address> addr=addrService.findAllAddresses();
 		assertEquals(1, addr.size());
@@ -40,6 +43,7 @@ public class AddressServiceImplTest {
 	
 	@Test
 	@Disabled
+	// view address by id
 	void testViewAddressbyId() {
 		Address addr=addrService.findAddressById(10);
 		System.out.println(addr);
@@ -48,6 +52,7 @@ public class AddressServiceImplTest {
 	
 	@Test
 	@Disabled
+	//update address
 	void testUpdateAddress() {
 		Address address=new Address();
 		address.setId(10);
