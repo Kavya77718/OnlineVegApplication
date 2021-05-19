@@ -4,19 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import com.cg.vegetable.module.Payments;
 import com.cg.vegetable.repository.IPaymentRepository;
-
 
 @SpringBootTest
 class PaymentServiceMockito {
@@ -33,7 +29,7 @@ class PaymentServiceMockito {
 	}
 	
 	@Test
-	@Disabled
+	//@Disabled
 	public void testfindPaymentById() {
 		Payments payById = new Payments(23,"Cash on Delivery",2.00, 0.00, 300.00);
 		
@@ -41,13 +37,13 @@ class PaymentServiceMockito {
 		
 		Payments pay = serviceimpl.findPaymentById(23);
 		
-		assertEquals(23,payById.getPaymentId());
-		assertEquals(2.00, payById.getItemTotal());
+		assertEquals(23,pay.getPaymentId());
+		assertEquals(2.00, pay.getItemTotal());
 	
 	}
 	
 	@Test
-	@Disabled
+	//@Disabled
 	public void testsavePaymentDetails() {
 		Payments payById = new Payments(26,"Cash on Delivery",2.00, 0.00, 500.00);
 		
@@ -60,7 +56,7 @@ class PaymentServiceMockito {
 	}
 	
 	@Test
-	@Disabled
+	//@Disabled
 	public void testDeletePaymentById() {
 		Payments payById = new Payments(28,"Cash on Delivery",2.00, 0.00, 500.00);
 		
@@ -73,7 +69,7 @@ class PaymentServiceMockito {
 	}
 		
 	@Test
-	@Disabled
+	//@Disabled
 	void testFindAllPayments() {
 		Payments payById1 = new Payments(30,"Cash on Delivery",2.00, 0.00, 500.00);
 		Payments payById2 = new Payments(31,"Cash on Delivery",2.00, 0.00, 300.00);
@@ -85,7 +81,6 @@ class PaymentServiceMockito {
 		Mockito.when(iordrep.findAll()).thenReturn(allOrders);
 		
 		List<Payments> orderList = serviceimpl.findAllPayments();
-		
 		assertEquals(2,orderList.size());
 	}
 	 

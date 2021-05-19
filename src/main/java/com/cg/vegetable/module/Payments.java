@@ -1,13 +1,11 @@
 package com.cg.vegetable.module;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Payments {
@@ -19,10 +17,11 @@ public class Payments {
 	private double shippingFee;
 	private double totalPrice;
 
-	@OneToMany(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "pay_Id", referencedColumnName = "paymentId ")
-	private List<OrderDet> orders;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Order_Id")
+	private OrderDet orderNo;
 
+	//parameterized constructor
 	public Payments(long paymentId, String paymentType, double itemTotal, double shippingFee, double totalPrice) {
 		super();
 		this.paymentId = paymentId;
@@ -32,9 +31,11 @@ public class Payments {
 		this.totalPrice = totalPrice;
 	}
 
+	//default constructor
 	public Payments() {
   }
 
+	//Getters and setters
 	public long getPaymentId() {
 		return paymentId;
 	}
@@ -75,18 +76,19 @@ public class Payments {
 		this.totalPrice = totalPrice;
 	}
 
-	public List<OrderDet> getOrders() {
-		return orders;
+	public OrderDet getOrders() {
+		return orderNo;
 	}
 
-	public void setOrders(List<OrderDet> orders) {
-		this.orders = orders;
+	public void setOrders(OrderDet orderNo) {
+		this.orderNo = orderNo;
 	}
 
+	//Generate toString
 	@Override
 	public String toString() {
 		return "Payments [paymentId=" + paymentId + ", paymentType=" + paymentType + ", itemTotal=" + itemTotal
-				+ ", shippingFee=" + shippingFee + ", totalPrice=" + totalPrice + ", orders=" + orders + "]";
+				+ ", shippingFee=" + shippingFee + ", totalPrice=" + totalPrice + ", orderNo=" + orderNo + "]";
 	}
 
 }

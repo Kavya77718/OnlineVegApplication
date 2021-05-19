@@ -29,16 +29,12 @@ public class CustomerServiceImplTest {
 		assertEquals(1, persistedCust.getCustomerId());
 		assertEquals("chennai", persistedCust.getAddress().getLocation());
 	}
-		
-
-	
-		
+				
 	@Test
 	@Disabled
 	void testDeleteCustomerId() {
 		Customer persistedCust = custService.deleteCustomerbyId(2);
 		assertEquals("Kavya",persistedCust.getName());
-
 	}
 
 	@Test
@@ -48,8 +44,7 @@ public class CustomerServiceImplTest {
 		customer1.setCustomerId(1);
 		customer1.setName("Shriya");
 		customer1.setMobileNumber("852963741");
-
-		customer1.setEmailid("abcd@gmail.com");
+		customer1.setEmailId("abcd@gmail.com");
 		Address address = new Address(1, 89, "el", "kk nagar", "chennai", "TN", "600088");
 		customer1.setAddress(address);
 		Customer persistedCust = custService.updateCustomer(customer1);

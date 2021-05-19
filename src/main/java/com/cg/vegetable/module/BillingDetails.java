@@ -15,6 +15,7 @@ public class BillingDetails {
 	@OneToOne(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_id", referencedColumnName = "orderNo")
 	private OrderDet order;
+	
 	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customerId")
 	private Customer customer;
@@ -42,7 +43,6 @@ public class BillingDetails {
 		this.billingId = billingId;
 	}
 
-
 	public OrderDet getOrder() {
 		return order;
 	}
@@ -58,7 +58,6 @@ public class BillingDetails {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-
 
 	public String getTransactionMode() {
 		return transactionMode;
@@ -91,4 +90,4 @@ public class BillingDetails {
 				+ ", transactionMode=" + transactionMode + ", transactionDate=" + transactionDate
 				+ ", transactionStatus=" + transactionStatus + "]";
 	}
-
+}

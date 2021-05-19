@@ -14,11 +14,12 @@ public class Address {
 	private String state;
 	private String pincode;
 
+	//Default Constructor
 	public Address() {
 	}
 
-	public Address(int id, int flatNo, String buildingName, String area, String location, String state,
-			String pincode) {
+	//Parameterized Constructor
+	public Address(int id, int flatNo, String buildingName, String area, String location, String state, String pincode) {
 		super();
 		this.id = id;
 		this.flatNo = flatNo;
@@ -29,6 +30,7 @@ public class Address {
 		this.pincode = pincode;
 	}
 
+	// getters and setters
 	public int getId() {
 		return id;
 	}
@@ -85,6 +87,7 @@ public class Address {
 		this.pincode = pincode;
 	}
 
+	//ToString
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", flatNo=" + flatNo + ", buildingName=" + buildingName + ", area=" + area

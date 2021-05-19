@@ -31,14 +31,14 @@ public class FeedbackServiceImplTest {
     }
 	
 	@Test
-	//@Disabled
+	@Disabled
 	void testViewFeedback() {
 		List<Feedback> feed = feedService.viewFeedback(1);
 		assertEquals(2, feed.size());
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	void testViewAllFeedback() {
 		List<Feedback> feed = feedService.viewAllFeedbacks(20);
 		assertEquals(1, feed.size());

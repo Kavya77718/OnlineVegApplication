@@ -2,13 +2,10 @@ package com.cg.vegetable.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.cg.vegetable.module.OrderDet;
 import com.cg.vegetable.repository.IOrderRepository;
-
 
 @Service
 public class OrderServiceImpl implements IOrderService{
@@ -33,15 +30,15 @@ public class OrderServiceImpl implements IOrderService{
 	@Override
 	public OrderDet updateOrderDetails(OrderDet order) {
 		OrderDet ord = iordr.findById(order.getOrderNo()).get();
-		ord.setCustId(order.getCustId());
+		ord.setCustomer(order.getCustomer());
 		ord.setVegList(order.getVegList());
 		ord.setTotalAmount(order.getTotalAmount());
 		return iordr.save(order);
+		
 	}
-	
 	@Override
-	public List<OrderDet> viewAllOrders(int custId) {
-		return iordr.findAllOrdersByCustId(custId);
+	public List<OrderDet> viewAllOrders(int customerId) {
+		return iordr.viewOrderList(customerId);
 	}
 
 	@Override

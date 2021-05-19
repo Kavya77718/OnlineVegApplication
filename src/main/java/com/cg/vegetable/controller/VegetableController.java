@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.vegetable.exception.VegetableNotFoundException;
-import com.cg.vegetable.module.Cart;
-import com.cg.vegetable.module.Customer;
 import com.cg.vegetable.module.Vegetable;
 import com.cg.vegetable.service.IVegetableService;
 
@@ -31,7 +29,6 @@ public class VegetableController {
 
 	@PutMapping("/vegetable/{id}")
 	public Vegetable update(@PathVariable("id") int VegId, @RequestBody Vegetable dto) {
-
 		if (vegsev.viewVegetableById(VegId) == null) {
 			throw new VegetableNotFoundException("Vegetable not found with given id: " + VegId);
 		}
@@ -40,7 +37,6 @@ public class VegetableController {
 
 	@DeleteMapping("/vegetable/id/{id}")
 	public Vegetable remove(@PathVariable("id") int VegId) {
-
 		if (vegsev.viewVegetableById(VegId) == null) {
 			throw new VegetableNotFoundException("Vegetable not found with given id: " + VegId);
 		}
@@ -58,7 +54,6 @@ public class VegetableController {
 	@GetMapping("/vegetable/view")
 	public List<Vegetable> viewAllVegetables() {
 		return vegsev.retrive();
-
 	}
 
 	@GetMapping("/vegetable/type/{type}")
@@ -78,4 +73,4 @@ public class VegetableController {
 		return vegsev.viewVegetableByName(name);
 
 	}
-
+}
