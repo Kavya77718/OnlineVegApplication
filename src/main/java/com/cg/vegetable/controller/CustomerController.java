@@ -23,12 +23,13 @@ public class CustomerController {
 	@Autowired
 	ICustomerService custService;
 
-	// add
+	// add customer
 	@PostMapping("/customer")
 	public Customer addCustomer(@Valid @RequestBody Customer customer) {
 		return custService.addCustomer(customer);
 	}
-
+        
+	// view customer by customer id
 	@GetMapping("/customer/id/{id}")
 	public Customer viewCustomerbyId(@PathVariable("id") int customerId) {
 		if (custService.viewCustomerbyId(customerId) == null) {
@@ -37,7 +38,7 @@ public class CustomerController {
 		return custService.viewCustomerbyId(customerId);
 	}
 
-	// Update
+	// Update customer by id
 	@PutMapping("/customer/{id}")
 	public Customer updateCustomer(@PathVariable("id") int id, @Valid @RequestBody Customer customer1) {
 		return custService.updateCustomer(customer1);
@@ -52,6 +53,7 @@ public class CustomerController {
 		return custService.deleteCustomerbyId(customerId);
 	}
 
+	//view customer by location
 	@GetMapping("/customerr/{location}")
 	public List<Customer> viewCustomerList(@PathVariable("location") String location) {
 		return custService.viewCustomerList(location);
