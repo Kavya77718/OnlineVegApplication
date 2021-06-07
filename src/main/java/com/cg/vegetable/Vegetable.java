@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 public class Vegetable {
 
-	org.apache.logging.log4j.Logger logger = LogManager.getLogger();
+	org.apache.logging.log4j.Logger logger = LogManager.getLogger(Vegetable.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(Vegetable.class, args);

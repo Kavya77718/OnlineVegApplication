@@ -15,7 +15,7 @@ public interface ICartService {
 	public List<Cart> viewAllItems();
 
 	public void removeAllItems();
-	
+
 	public Vegetable UpdateVegQuantity(int vegId, int quantity);
 
 }
