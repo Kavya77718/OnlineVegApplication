@@ -3,9 +3,12 @@ package com.cg.vegetable.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -29,7 +32,41 @@ class BillingServiceMockitoTest {
 	void init() {
 		MockitoAnnotations.openMocks(this);
 	}
-
+	
+	/**
+	 * This below function is used to Test the method testFindAllBills 
+	 * and to check whether it finds all bills from the database
+	 */
+	//Find all bills
+		@Test
+		//@Disabled
+		void testFindAllBills() {
+			List<BillingDetails> bill=billingService.viewAllBills();
+			assertEquals(10, bill.size());
+		}
+		
+		/**
+		 * This below function is used to Test the method testViewAllBills 
+		 * and to check whether it retrieves bills from the database
+		 */
+	@Test
+	//@Disabled
+	void testViewAllBills() {
+		BillingDetails bill1 = new BillingDetails(348, "COD", "02-01-1991", "SUCCESS");
+		BillingDetails bill2 = new BillingDetails(349, "ONLINE", "02-01-1992", "SUCCESS");
+		List<BillingDetails> billList = new ArrayList<>();
+		billList.add(bill1);
+		billList.add(bill2);
+		Mockito.when(billingRepository.findAll()).thenReturn(billList);
+		List<BillingDetails> bill = billingService.viewAllBills();
+		assertEquals(2, bill.size());
+	}
+	
+	/**
+	 * This below function is used to Test the method testShouldAddBill 
+	 * and to check whether it adds  bill to  the database
+	 */
+	
 	@Test
 
 	void testShouldAddBill() {
@@ -43,19 +80,28 @@ class BillingServiceMockitoTest {
 
 	}
 
+	/**
+	 * This below function is used to Test the method testShouldUpdateBill
+	 * and to check whether it is updating the bill in the database
+	 */
 	@Test
 
 	void testShouldUpdateBill() {
 		BillingDetails bill = new BillingDetails(344, "DebitCard", "02-01-1999", "FAILED");
 		Mockito.when(billingRepository.findById(344)).thenReturn(Optional.of(bill));
 		Mockito.when(billingRepository.save(bill)).thenReturn(bill);
-		BillingDetails persistedBillingDetails = billingService.updateBill(bill);
+		BillingDetails persistedBillingDetails = billingService.updateBill(344,bill);
 		assertEquals(344, persistedBillingDetails.getBillingId());
 		assertEquals("FAILED", persistedBillingDetails.getTransactionStatus());
 
 	}
-
+	
+	/**
+	 * This below function is used to Test the method testShouldViewById 
+	 * and to check whether it retrieves bills from the database
+	 */
 	@Test
+	@Disabled
 	void testShouldViewById() {
 		BillingDetails bill = new BillingDetails(345, "DebitCard", "02-01-1999", "SUCCESS");
 
@@ -66,8 +112,12 @@ class BillingServiceMockitoTest {
 		assertEquals(345, persistedBill.getBillingId());
 	}
 
+	/**
+	 * This below function is used to Test the method testShouldDeleteBill 
+	 * and to check whether it deletes bill by Id from the database
+	 */
 	@Test
-
+    @Disabled
 	void testShouldDeleteBill() {
 		BillingDetails bill = new BillingDetails(341, "COD", "31/04/1993", "SUCCESS");
 		Mockito.when(billingRepository.findById(341)).thenReturn(Optional.of(bill));
