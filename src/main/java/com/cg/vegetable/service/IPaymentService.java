@@ -9,5 +9,5 @@ public interface IPaymentService {
 	 public Payments findPaymentById(long paymentId);
 	 public List<Payments> findAllPayments();
 	 public Payments save(Payments payment);
-	 public Payments deletePaymentById(long paymentId);
+	 public Payments deletePaymentById(long paymentId); 
 }

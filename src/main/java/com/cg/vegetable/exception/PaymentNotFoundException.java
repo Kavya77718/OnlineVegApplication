@@ -14,4 +14,4 @@ public class PaymentNotFoundException extends RuntimeException {
 			super(cause);
 		}
 
-	}
+}
