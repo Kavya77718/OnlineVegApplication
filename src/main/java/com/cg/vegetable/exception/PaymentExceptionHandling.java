@@ -13,7 +13,6 @@ public class PaymentExceptionHandling {
 		@ExceptionHandler
 		public ResponseEntity<PaymentErrorResponse> handleException(PaymentNotFoundException exception) {
 			PaymentErrorResponse error = new PaymentErrorResponse();
-			
 			error.setStatus(HttpStatus.NOT_FOUND.value()); // 404
 			error.setMessage(exception.getMessage());
 			error.setTimeStamp(System.currentTimeMillis());
@@ -24,7 +23,6 @@ public class PaymentExceptionHandling {
 		@ExceptionHandler
 		public ResponseEntity<PaymentErrorResponse> handleException(Exception exception) {
 			PaymentErrorResponse error = new PaymentErrorResponse();
-			
 			error.setStatus(HttpStatus.BAD_REQUEST.value()); // 400
 			error.setMessage(exception.getMessage());
 			error.setTimeStamp(System.currentTimeMillis());

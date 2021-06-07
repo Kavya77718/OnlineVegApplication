@@ -1,110 +1,101 @@
 package com.cg.vegetable.service;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import org.junit.jupiter.api.Disabled;
+import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.cg.vegetable.module.OrderDet;
-import com.cg.vegetable.module.Vegetable;
-
 
 @SpringBootTest
 class OrderServiceTest {
 	
+	//Logger
+	org.apache.logging.log4j.Logger logger = LogManager.getLogger(OrderServiceTest.class);
+		
+	//AutoWiring the OrderService class to call down the service
 	@Autowired
 	IOrderService ordService;
 	
 	@Autowired
 	IVegetableService vegService;
 
+	// Testing whether the new order is adding to the database or not
 	@Test
-	@Disabled
+	//@Disabled
 	void testAddOrder() {
 		OrderDet orderdet = new OrderDet(); 
-		Vegetable vegdto1 = new Vegetable(7,"Carrot","Vegetable",50.00,1);
-		Vegetable vegdto2 = new Vegetable(8,"BeetRoot","Vegetable",50.00,1);
-		Vegetable vegie =vegService.save(vegdto2);
 		orderdet.setOrderNo(1);
-		orderdet.setCustId(126);
 		orderdet.setOrderDate("2020-08-09");
 		orderdet.setTotalAmount(100.00);
 		orderdet.setStatus("Delivered");
 		
-		List VegList = Stream.of(vegdto1, vegdto2).collect(Collectors.toList());
-		orderdet.setVegList(VegList);
-		
 		OrderDet persistedOrd = ordService.addOrder(orderdet);
 		assertEquals(1,persistedOrd.getOrderNo());
-		assertEquals(126,persistedOrd.getCustId());
 		assertEquals("2020-08-09",persistedOrd.getOrderDate());
 		assertEquals(100.00,persistedOrd.getTotalAmount());
 		assertEquals("Delivered",persistedOrd.getStatus());
-		//assertEquals(7,vegie.getVegId());
-		//assertEquals("Carrot",vegie.getName());
-		assertEquals(8,vegie.getVegId());
-		assertEquals("BeetRoot",vegie.getName());
-		
-			}
+		logger.info(orderdet);
+		logger.info("Added order successfully");
+		}
+	
+	// Testing whether the given id fetches the given order or not.
 	@Test
-	@Disabled
+	//@Disabled
 	public void testViewOrderById() {
-		OrderDet orderById = ordService.viewOrder(6);
-		System.out.println(orderById);
-		
-		assertEquals("2020-08-09",orderById.getOrderDate());
+		OrderDet orderById = ordService.viewOrder(201);
+		System.out.println(orderById);	
+		assertEquals("2020-08-01",orderById.getOrderDate());
 		assertEquals("Delivered", orderById.getStatus());
-	
+		logger.info(orderById);
+		logger.info("Viewed order successfully");
 	}
+	
+	// Testing whether the given id fetches the given order to update and whether it is updating the order
 	@Test
-	@Disabled
+	//@Disabled
 	public void testupdateOrderDetails() {
-		OrderDet orderById = ordService.viewOrder(6);
-		orderById.setOrderDate("2020-08-09");
-		orderById.setStatus("Delivered");
-		
+		OrderDet orderById = ordService.viewOrder(202);
+		orderById.setOrderDate("2020-08-10");
+		orderById.setStatus("Ordered");
 		OrderDet ordupdate = ordService.updateOrderDetails(orderById);
-		
-		assertEquals("2020-08-09",ordupdate.getOrderDate());
-		assertEquals("Delivered", ordupdate.getStatus());
+		assertEquals("2020-08-10",ordupdate.getOrderDate());
+		assertEquals("Ordered", ordupdate.getStatus());
+		logger.info(orderById);
+		logger.info("Updated order successfully");
 	}
 	
-	
+	// Testing whether the given date fetches the list of orders or not.
 	@Test
-	@Disabled
-	void testviewAllOrdersByCustId() {
-		List<OrderDet> ordbyCust = ordService.viewAllOrders(127);
-		System.out.println(ordbyCust);
-		assertEquals(2,ordbyCust.size());	
-	}
-	
-	@Test
-	@Disabled
+	//@Disabled
 	void testviewOrderListByDate() {
-		List<OrderDet> ordbyCust = ordService.viewOrderList("2020-08-09");
-		System.out.println(ordbyCust);
-		assertEquals(3,ordbyCust.size());
+		List<OrderDet> ordbyDate = ordService.viewOrderList("2020-08-01");
+		System.out.println(ordbyDate);
+		assertEquals(1,ordbyDate.size());
+		logger.info(ordbyDate);
+		logger.info("fetching list of orders by date successfully");
 	}
-
+	
+	// Testing whether the given id fetches the given order or not
 	@Test
-	@Disabled
+	//@Disabled
 	void testviewOrderList() {
 		List<OrderDet> ordbyCust = ordService.viewOrderList();
-		assertEquals(5,ordbyCust.size());
-
+		assertEquals(6,ordbyCust.size());
+		logger.info(ordbyCust);
+		logger.info("fetching list of orders by customer id successfully");
 	}
 
+	// Testing whether the given id fetches and deleted the given order or not
 	@Test
-	@Disabled
+	//Disabled
 	public void testCancelOrder() {
-		OrderDet cancelorder = ordService.cancelOrder(9);
-		assertEquals(9, cancelorder.getOrderNo());
+		OrderDet cancelorder = ordService.cancelOrder(202);
+		assertEquals(202, cancelorder.getOrderNo());
+		logger.info(cancelorder);
+		logger.info("deleted date successfully");
 	}
 }
 
