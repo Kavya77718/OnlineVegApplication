@@ -25,8 +25,8 @@ class BillingServiceTest {
 	IBillingService billService;
 
 	/**
-	 * This below function is used to Test the method testViewAllBills 
-	 * and to check whether it retrieves bills from the database
+	 * This below function is used to Test the method testViewAllBills and to check
+	 * whether it retrieves bills from the database
 	 */
 	@Test
 	@Disabled
@@ -42,17 +42,16 @@ class BillingServiceTest {
 		logger.info("Added Bill Successfully");
 	}
 
-
 	/**
-	 * This below function is used to Test the method testShouldUpdateBill
-	 * and to check whether it is updating the bill in the database
+	 * This below function is used to Test the method testShouldUpdateBill and to
+	 * check whether it is updating the bill in the database
 	 */
 	@Test
 	// @Disabled
 	void testShouldUpdateBill() {
 
 		BillingDetails bill = new BillingDetails(2, "COD", "02-01-1997", "SUCCESS");
-		BillingDetails persistedBill = billService.updateBill(2,bill);
+		BillingDetails persistedBill = billService.updateBill(2, bill);
 		assertEquals(2, persistedBill.getBillingId());
 		assertEquals("COD", persistedBill.getTransactionMode());
 		assertEquals("02/01/2001", persistedBill.getTransactionDate());
@@ -62,23 +61,22 @@ class BillingServiceTest {
 	}
 
 	/**
-	 * This below function is used to Test the method testViewAllBills 
-	 * and to check whether it retrieves bills from the database
+	 * This below function is used to Test the method testViewAllBills and to check
+	 * whether it retrieves bills from the database
 	 */
-	//viewAll Bill
-		@Test
-		//@Disabled
-		void testViewAllBill() {
-			List<BillingDetails> bill=billService.viewAllBills();
-			logger.info(bill);
-			assertEquals(10, bill.size());
-		}
-	
-	
+	// viewAll Bill
+	@Test
+	// @Disabled
+	void testViewAllBill() {
+		List<BillingDetails> bill = billService.viewAllBills();
+		logger.info(bill);
+		assertEquals(10, bill.size());
+	}
+
 	/**
- 	* This below function is used to Test the method testShouldViewById 
-	* and to check whether it retrieves bills from the database
-	**/
+	 * This below function is used to Test the method testShouldViewById and to
+	 * check whether it retrieves bills from the database
+	 **/
 	@Test
 	// @Disabled
 	void testShouldViewById() {
@@ -91,12 +89,12 @@ class BillingServiceTest {
 	}
 
 	/**
-	 * This below function is used to Test the method testShouldDeleteBill 
-	 * and to check whether it deletes bill by Id from the database
+	 * This below function is used to Test the method testShouldDeleteBill and to
+	 * check whether it deletes bill by Id from the database
 	 */
 	@Test
 	@Disabled
-       void testDeleteBill() {
+	void testDeleteBill() {
 		BillingDetails persistedBill = billService.deleteById(2);
 		assertEquals(346, persistedBill.getBillingId());
 		assertEquals("COD", persistedBill.getTransactionMode());

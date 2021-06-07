@@ -12,11 +12,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-   /**
-   * BillingEntity class
-   *
-   */
- 
+
+/**
+ * BillingEntity class
+ *
+ */
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -27,31 +28,31 @@ public class BillingDetails {
 	 */
 	@Id
 	private int billingId;
-	
-    @JsonIgnore
+
+	@JsonIgnore
 	@OneToOne(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
-    /**
+	/**
 	 * BillingEntity is mapped to OrderEntity
 	 * 
 	 */
 	@JoinColumn(name = "order_id", referencedColumnName = "orderNo")
 	private OrderDet order;
-    @JsonIgnore
-    /**
+	@JsonIgnore
+	/**
 	 * BillingEntity is mapped to CustomerEntity
 	 * 
 	 */
 	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customerId")
 	private Customer customer;
-    @NotEmpty(message="transactionMode should not be empty")
+	@NotEmpty(message = "transactionMode should not be empty")
 	private String transactionMode;
-    @NotEmpty(message="transactionDate should not be empty")
+	@NotEmpty(message = "transactionDate should not be empty")
 	private String transactionDate;
-    @NotEmpty(message="transactionStatus should not be empty")
+	@NotEmpty(message = "transactionStatus should not be empty")
 	private String transactionStatus;
 
-		public BillingDetails(int billingId, String transactionMode, String transactionDate, String transactionStatus) {
+	public BillingDetails(int billingId, String transactionMode, String transactionDate, String transactionStatus) {
 		super();
 		this.billingId = billingId;
 		this.transactionMode = transactionMode;
