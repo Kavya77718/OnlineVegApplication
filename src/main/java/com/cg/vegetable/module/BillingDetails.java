@@ -2,19 +2,55 @@ package com.cg.vegetable.module;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * BillingEntity class
+ *
+ */
 
 @Entity
-@Table(name = "billtab")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BillingDetails {
+	/**
+	 * creating instance variables for the class BillingEntity
+	 */
 	@Id
 	private int billingId;
-	private String transactionMode;
-	private String transactionDate;
-	private String transactionStatus;
 
-	public BillingDetails() {
-	}
+	@JsonIgnore
+	@OneToOne(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
+	/**
+	 * BillingEntity is mapped to OrderEntity
+	 * 
+	 */
+	@JoinColumn(name = "order_id", referencedColumnName = "orderNo")
+	private OrderDet order;
+	@JsonIgnore
+	/**
+	 * BillingEntity is mapped to CustomerEntity
+	 * 
+	 */
+	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_id", referencedColumnName = "customerId")
+	private Customer customer;
+	@NotEmpty(message = "transactionMode should not be empty")
+	private String transactionMode;
+	@NotEmpty(message = "transactionDate should not be empty")
+	private String transactionDate;
+	@NotEmpty(message = "transactionStatus should not be empty")
+	private String transactionStatus;
 
 	public BillingDetails(int billingId, String transactionMode, String transactionDate, String transactionStatus) {
 		super();
@@ -23,44 +59,4 @@ public class BillingDetails {
 		this.transactionDate = transactionDate;
 		this.transactionStatus = transactionStatus;
 	}
-
-	public int getBillingId() {
-		return billingId;
-	}
-
-	public void setBillingId(int billingId) {
-		this.billingId = billingId;
-	}
-
-	public String getTransactionMode() {
-		return transactionMode;
-	}
-
-	public void setTransactionMode(String transactionMode) {
-		this.transactionMode = transactionMode;
-	}
-
-	public String getTransactionDate() {
-		return transactionDate;
-	}
-
-	public void setTransactionDate(String transactionDate) {
-		this.transactionDate = transactionDate;
-	}
-
-	public String getTransactionStatus() {
-		return transactionStatus;
-	}
-
-	public void setTransactionStatus(String transactionStatus) {
-		this.transactionStatus = transactionStatus;
-	}
-
-	@Override
-	public String toString() {
-		return "BillingDetails [billingId=" + billingId + ", transactionMode=" + transactionMode + ", transactionDate="
-				+ transactionDate + ", transactionStatus=" + transactionStatus + "]";
-	}
 }
-
-
