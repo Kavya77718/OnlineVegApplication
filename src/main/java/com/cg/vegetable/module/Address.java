@@ -28,6 +28,8 @@ public class Address {
 	@NotEmpty(message = "Pincode cannot be empty")
 	private String pincode;
 
+	public Address(int id, int flatNo, String buildingName, String area, String location, String state,
+			String pincode) {
 	/**
 	 * Creating no arg constructor.
 	 */
@@ -38,6 +40,7 @@ public class Address {
 	 * Creating arg constructor.
 	 */
 	public Address(int id, int flatNo, String buildingName, String area, String location, String state,String pincode) {
+
 		super();
 		this.id = id;
 		this.flatNo = flatNo;
@@ -47,7 +50,6 @@ public class Address {
 		this.state = state;
 		this.pincode = pincode;
 	}
-
 	/**
 	 * getters and setters
 	 */
@@ -107,9 +109,11 @@ public class Address {
 		this.pincode = pincode;
 	}
 
+
 	/**
 	 * Creating toString
 	 */
+
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", flatNo=" + flatNo + ", buildingName=" + buildingName + ", area=" + area

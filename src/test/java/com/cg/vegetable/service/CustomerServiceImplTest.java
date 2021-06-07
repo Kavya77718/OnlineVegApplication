@@ -1,7 +1,7 @@
 package com.cg.vegetable.service;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,8 +14,7 @@ import com.cg.vegetable.module.Address;
 import com.cg.vegetable.module.Customer;
 
 @SpringBootTest
-public class CustomerServiceImplTest {
-	
+public class CustomerServiceImplTest {	
 	/**
 	 * Logger
 	 */
@@ -60,6 +59,7 @@ public class CustomerServiceImplTest {
 	 * This below function is used to test the testViewCustomerById and to check whether it retrieves customer by id
 	 * from the database
 	 */
+
 	@Test
 	@Disabled
 	void testViewCustomerbyId() {
@@ -70,6 +70,18 @@ public class CustomerServiceImplTest {
 		System.out.println(persistedCust);
 		assertEquals("Kavya",persistedCust.getName());
 	}
+
+
+	@Test
+	@Disabled
+	void testRemoveCustomer() {
+		Customer customer1 = new Customer(1);
+		Customer persistedCust = custService.removeCustomer(customer1);
+		assertEquals(1, persistedCust.getCustomerId());
+		assertEquals("Monisha", persistedCust.getName());
+	}
+
+
 	
 	/**
 	 * This below function is used to test the testDeleteCustomerById and to check whether it deletes customer by id
@@ -87,6 +99,7 @@ public class CustomerServiceImplTest {
 	/**
 	 * This below function is used to test the testUpdateCustomer and to check whether it updates customer to the database
 	 */
+
 	@Test
 	@Disabled
 	void testUpdateCustomer() {
@@ -108,13 +121,13 @@ public class CustomerServiceImplTest {
 	/**
 	 * This below function is used to test the testViewCustomerList and to check whether it retrieves all customers by location
 	 * from the database
-	 */	@Test
+	 */
+  @Test
 	@Disabled
 	void testViewCustomerList() {
 		logger.info("getting list of customers by passing location");
 		List<Customer> cust1 = custService.viewCustomerList("chennai");
 		assertEquals(1, cust1.size());
 	}
-	
-	
+
 }

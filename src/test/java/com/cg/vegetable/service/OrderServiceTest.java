@@ -3,7 +3,6 @@ package com.cg.vegetable.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.Set; 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,8 +28,8 @@ class OrderServiceTest {
 	@Disabled
 	void testAddOrder() {
 		OrderDet orderdet = new OrderDet(); 
-		Vegetable vegdto1 = new Vegetable(7,"Carrot","Vegetable","A",50.00,1);
-		Vegetable vegdto2 = new Vegetable(8,"BeetRoot","Vegetable","A",50.00,1);
+		Vegetable vegdto1 = new Vegetable(7,"Carrot","Vegetable",50.00,1);
+		Vegetable vegdto2 = new Vegetable(8,"BeetRoot","Vegetable",50.00,1);
 		Vegetable vegie =vegService.save(vegdto2);
 		orderdet.setOrderNo(1);
 		orderdet.setCustId(126);

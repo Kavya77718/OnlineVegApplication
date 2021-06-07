@@ -6,7 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -15,6 +14,7 @@ import javax.validation.constraints.Size;
 /**
  * Customer Entity
  */
+
 @Entity
 public class Customer {
 	
@@ -58,7 +58,7 @@ public class Customer {
 	public Customer(int customerId) {
 		this.customerId = customerId;
 	}
-	
+
 	public Customer(Address address) {
 		this.address = (List<Address>) address;
 	}
@@ -81,6 +81,8 @@ public class Customer {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	
 
 	public String getMobileNumber() {
 		return mobileNumber;
@@ -114,6 +116,9 @@ public class Customer {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", mobileNumber=" + mobileNumber + ", emailId="
 				+ emailId + ", address=" + address + "]";
 	}
+
 	
 }
 
+
+}

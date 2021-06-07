@@ -15,7 +15,6 @@ public class BillingService implements IBillingService {
 
 	
 	@Autowired
-	static
  	IBillingRepository billRepo;  
 
 

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -18,43 +17,48 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.cg.vegetable.module.Cart;
 import com.cg.vegetable.repository.ICartRepository;
 
-
-
 @ExtendWith(SpringExtension.class)
 class CartServiceMockitoTest {
 
 	@InjectMocks
 	CartServiceImpl cartser;
-	
+
 	@MockBean
 	ICartRepository cartrepo;
-	
+
 	@BeforeEach
 	void init() {
 		MockitoAnnotations.openMocks(this);
 	}
+
 	@Test
-	@Disabled
-	void testAdd(){
-		Cart cart=new Cart(4, 103);
+	void testAdd() {
+		Cart cart = new Cart(6);
 		Mockito.when(cartrepo.save(cart)).thenReturn(cart);
-		Cart vegetable=cartser.addToCart(cart);
-		assertEquals(4,vegetable.getCartId());
+		Cart vegetable = cartser.addToCart(cart);
+		assertEquals(6, vegetable.getCartId());
 	}
+
 	@Test
 	@Disabled
 	void viewAllItems() {
-		Cart d1=new Cart(1,100);
-		Cart d2=new Cart(2,101);
-		Cart d3=new Cart(3,102);
-		
-		List<Cart>l=new ArrayList<>();
+		Cart d1 = new Cart(1);
+		Cart d2 = new Cart(2);
+		Cart d3 = new Cart(3);
+		Cart d4 = new Cart(4);
+		Cart d5 = new Cart(5);
+		Cart d6 = new Cart(6);
+
+		List<Cart> l = new ArrayList<>();
 		l.add(d1);
 		l.add(d2);
 		l.add(d3);
+		l.add(d4);
+		l.add(d5);
+		l.add(d6);
 		Mockito.when(cartrepo.findAll()).thenReturn(l);
-		List<Cart>cartlist=cartrepo.findAll();
-		assertEquals(3,cartlist.size());
+		List<Cart> cartlist = cartrepo.findAll();
+		assertEquals(6, cartlist.size());
 	}
-	
+
 }

@@ -7,29 +7,54 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+/**
+ * CartEntity class
+ *
+ */
 @Entity
-
 public class Cart {
+	/**
+	 * creating instance variables for the class CartEntity
+	 */
 	@Id
 	private int cartId;
-	private int custId;
+	/**
+	 * CustomerEntity is mapped to CartEntity
+	 * 
+	 */
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "custId")
+	private Customer customer;
+	/**
+	 * CartEntity is mapped to VegetableEntity
+	 */
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "cartId")
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "veg_Id", referencedColumnName = "vegId")
 	private List<Vegetable> vegetables;
-	
-	public Cart() {
 
+	/**
+	 * Creating Constructor
+	 */
+
+	public Cart() {
 	}
-	
-	public Cart(int cartId, int custId) {
+
+	public Cart(int cartId) {
 		super();
 		this.cartId = cartId;
-		this.custId = custId;
 
 	}
+
+	/**
+	 * *Getter&Setters
+	 */
 
 	public int getCartId() {
 		return cartId;
@@ -39,12 +64,12 @@ public class Cart {
 		this.cartId = cartId;
 	}
 
-	public int getCustId() {
-		return custId;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustId(int custId) {
-		this.custId = custId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public List<Vegetable> getVegetables() {
@@ -55,9 +80,12 @@ public class Cart {
 		this.vegetables = vegetables;
 	}
 
+	/**
+	 * Creating ToString Method
+	 */
 	@Override
 	public String toString() {
-		return "Cart [cartId=" + cartId + ", custId=" + custId + ", vegetables=" + vegetables + "]";
+		return "Cart [cartId=" + cartId + ", vegetables=" + vegetables + ", customer=" + customer + "]";
 	}
 
 }

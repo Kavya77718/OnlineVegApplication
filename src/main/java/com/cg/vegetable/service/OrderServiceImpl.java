@@ -1,6 +1,5 @@
 package com.cg.vegetable.service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.vegetable.module.OrderDet;
-import com.cg.vegetable.module.Vegetable;
 import com.cg.vegetable.repository.IOrderRepository;
-import com.cg.vegetable.repository.IVegetableRepository;
 
 
 @Service
