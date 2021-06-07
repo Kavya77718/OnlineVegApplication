@@ -15,4 +15,4 @@ public interface IOrderService {
 	public List<OrderDet> viewOrderList();
 	public OrderDet cancelOrder(int orderid);
 
-}
+} 

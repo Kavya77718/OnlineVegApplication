@@ -7,6 +7,7 @@ public class OrderErrorResponse {
 	
 	public OrderErrorResponse() {}
 
+	//parameterized constructor
 	public OrderErrorResponse(int status, String message, long timeStamp) {
 		super();
 		this.status = status;
@@ -37,7 +38,4 @@ public class OrderErrorResponse {
 	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
 	}
-	
-	
-
 }

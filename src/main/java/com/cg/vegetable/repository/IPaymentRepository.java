@@ -9,3 +9,4 @@ public interface IPaymentRepository extends JpaRepository<Payments, Long>{
 
 	
 }
+ 

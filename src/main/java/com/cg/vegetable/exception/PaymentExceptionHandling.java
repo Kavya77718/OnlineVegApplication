@@ -10,7 +10,7 @@ import com.cg.vegetable.module.PaymentErrorResponse;
 @ControllerAdvice
 public class PaymentExceptionHandling {
 	
-		@ExceptionHandler
+		@ExceptionHandler 
 		public ResponseEntity<PaymentErrorResponse> handleException(PaymentNotFoundException exception) {
 			PaymentErrorResponse error = new PaymentErrorResponse();
 			
