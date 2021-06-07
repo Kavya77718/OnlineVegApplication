@@ -10,5 +10,6 @@ public interface IFeedbackService {
 		public List<Feedback> viewAllFeedbacks(int vegetableId);
 		public List<Feedback> viewFeedback(int customerId);
 		public Feedback deleteFeedbackById(int feedbackId);
+		public List<Feedback> findAllFeedback();
 	}
 

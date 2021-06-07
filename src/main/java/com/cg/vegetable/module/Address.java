@@ -2,23 +2,42 @@ package com.cg.vegetable.module;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+/**
+ * Address Entity
+ */
 @Entity
 public class Address {
+	
+	/**
+	 * Creating instance variable for the class Address Entity
+	 */
 	@Id
 	private int id;
 	private int flatNo;
 	private String buildingName;
+	@NotEmpty(message = "Area name cannot be empty")
 	private String area;
+	@NotEmpty(message = "Location cannot be empty")
 	private String location;
+	@NotEmpty(message = "State cannot be empty")
 	private String state;
+	@NotEmpty(message = "Pincode cannot be empty")
 	private String pincode;
 
+	/**
+	 * Creating no arg constructor.
+	 */
 	public Address() {
 	}
 
-	public Address(int id, int flatNo, String buildingName, String area, String location, String state,
-			String pincode) {
+	/**
+	 * Creating arg constructor.
+	 */
+	public Address(int id, int flatNo, String buildingName, String area, String location, String state,String pincode) {
 		super();
 		this.id = id;
 		this.flatNo = flatNo;
@@ -29,6 +48,9 @@ public class Address {
 		this.pincode = pincode;
 	}
 
+	/**
+	 * getters and setters
+	 */
 	public int getId() {
 		return id;
 	}
@@ -85,6 +107,9 @@ public class Address {
 		this.pincode = pincode;
 	}
 
+	/**
+	 * Creating toString
+	 */
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", flatNo=" + flatNo + ", buildingName=" + buildingName + ", area=" + area

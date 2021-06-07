@@ -29,10 +29,4 @@ public class OnlineVegAppApplication {
 			.build();
 	}
 	
-	@Bean
-	CommandLineRunner cmdLineRunner(ICustomerRepository CustRepo) {
-		return args -> {
-	};
-	}
-
 }
