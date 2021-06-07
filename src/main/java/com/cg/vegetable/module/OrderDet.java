@@ -18,11 +18,12 @@ public class OrderDet {
 	private String orderDate;
 	private String status;
 
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "Order_No")
 	private List<Vegetable> vegList;
 
-	public OrderDet(int orderNo, int custId, double totalAmount, String orderDate, String status) {
+  public OrderDet(int orderNo,int custId, double totalAmount,String orderDate,String status) {
 		super();
 		this.orderNo = orderNo;
 		this.custId = custId;
@@ -34,6 +35,7 @@ public class OrderDet {
 	public OrderDet() {
 
 	}
+	
 
 	public int getOrderNo() {
 		return orderNo;

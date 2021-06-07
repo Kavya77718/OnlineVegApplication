@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,6 +21,7 @@ import com.cg.vegetable.repository.IVegetableRepository;
 
 @ExtendWith(SpringExtension.class)
 class VegetableServiceMockitoTest {
+
 
 	@InjectMocks
 	VegetableServiceImpl as;
@@ -76,4 +78,3 @@ class VegetableServiceMockitoTest {
 		assertEquals(7, d.getVegId());
 	}
 
-}

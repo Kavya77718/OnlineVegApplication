@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -39,6 +40,7 @@ class CartServiceMockitoTest {
 	}
 
 	@Test
+	@Disabled
 	void viewAllItems() {
 		Cart d1 = new Cart(1);
 		Cart d2 = new Cart(2);

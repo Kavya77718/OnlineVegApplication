@@ -48,7 +48,7 @@ class BillingServiceTest {
 	
 	
 	@Test
-//@Disabled
+    @Disabled
 	void testDeleteBill() {
 		
 		BillingDetails persistedBill=billService.deleteById(346);

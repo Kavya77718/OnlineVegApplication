@@ -3,8 +3,8 @@ package com.cg.vegetable.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +30,7 @@ class CartServiceTest {
 	 * cart service
 	 */
 	@Test
+	@Disabled
 	void testaddToCart() {
 		Cart cart = new Cart(3);
 		Cart persistedCust = ic.addToCart(cart);
@@ -43,6 +44,7 @@ class CartServiceTest {
 	 * the cart service
 	 */
 	@Test
+	@Disabled
 	void testviewAllItems() {
 		List<Cart> cart1 = ic.viewAllItems();
 		assertEquals(2, cart1.size());

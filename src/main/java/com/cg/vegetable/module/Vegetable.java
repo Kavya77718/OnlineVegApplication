@@ -1,5 +1,4 @@
 package com.cg.vegetable.module;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
@@ -12,7 +11,6 @@ import lombok.NoArgsConstructor;
  * VegetableEntity class
  *
  */
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -29,5 +27,6 @@ public class Vegetable {
 	private String type;
 	private double price;
 	private int quantity;
-
 }
+
+	

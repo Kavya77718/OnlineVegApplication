@@ -25,7 +25,7 @@ class OrderServiceTest {
 	IVegetableService vegService;
 
 	@Test
-	//@Disabled
+	@Disabled
 	void testAddOrder() {
 		OrderDet orderdet = new OrderDet(); 
 		Vegetable vegdto1 = new Vegetable(7,"Carrot","Vegetable",50.00,1);
@@ -53,7 +53,7 @@ class OrderServiceTest {
 		
 			}
 	@Test
-	//@Disabled
+	@Disabled
 	public void testViewOrderById() {
 		OrderDet orderById = ordService.viewOrder(6);
 		System.out.println(orderById);
@@ -63,7 +63,7 @@ class OrderServiceTest {
 	
 	}
 	@Test
-	//@Disabled
+	@Disabled
 	public void testupdateOrderDetails() {
 		OrderDet orderById = ordService.viewOrder(6);
 		orderById.setOrderDate("2020-08-09");
@@ -77,7 +77,7 @@ class OrderServiceTest {
 	
 	
 	@Test
-	//@Disabled
+	@Disabled
 	void testviewAllOrdersByCustId() {
 		List<OrderDet> ordbyCust = ordService.viewAllOrders(127);
 		System.out.println(ordbyCust);
@@ -85,7 +85,7 @@ class OrderServiceTest {
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	void testviewOrderListByDate() {
 		List<OrderDet> ordbyCust = ordService.viewOrderList("2020-08-09");
 		System.out.println(ordbyCust);
@@ -93,7 +93,7 @@ class OrderServiceTest {
 	}
 
 	@Test
-	//@Disabled
+	@Disabled
 	void testviewOrderList() {
 		List<OrderDet> ordbyCust = ordService.viewOrderList();
 		assertEquals(5,ordbyCust.size());

@@ -1,5 +1,9 @@
 package com.cg.vegetable.repository;
 
+/**
+ * User Repository interface extends
+ * {@link org.springframework.data.jpa.repository.JpaRepository}.
+ */
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +16,7 @@ import com.cg.vegetable.module.Customer;
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
-	@Query(value = "select * from customer inner join address on customer.address_id = address.id where address.location =:l", nativeQuery = true)
+	@Query(value = "select * from address inner join customer on address.cust_id = customer.customer_id where address.location =:l", nativeQuery = true)
 	List<Customer> viewCustomerList(@Param("l") String location);
 
 }

@@ -30,8 +30,11 @@ public class AddressServiceMokitoTest {
 		MockitoAnnotations.openMocks(this);
 	}
 	
+	/**
+	 * This below function is used to test the testAddAddress and to check whether it adds Address to the database
+	 */
 	@Test
-	@Disabled
+	//@Disabled
 	void testAddAddress(){
 		Address address=new Address(6, 9, "ak", "kk road", "Bangalore", "TN", "98");
 		Mockito.when(addrRep.save(address)).thenReturn(address);
@@ -39,7 +42,10 @@ public class AddressServiceMokitoTest {
 		assertEquals(6,address1.getId());
 	}
 	
-
+	/**
+	 * This below function is used to test the testDeleteAddressId and to check whether it deletes address by id
+	 *  from the database
+	 */	
 	@Test
 	//@Disabled
 	void testDeleteAddressById() {
@@ -49,8 +55,11 @@ public class AddressServiceMokitoTest {
 		assertEquals(4,address.getId());
 	}
 	
+	/**
+	 * This below function is used to test the testUpdateAddress and to check whether it updates address to the database
+	 */
 	@Test 
-	@Disabled
+	//@Disabled
 	void testupdateAddress() {
 		Address address=new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 		Mockito.when(addrRep.findById(4)).thenReturn(Optional.of(address));
@@ -59,9 +68,13 @@ public class AddressServiceMokitoTest {
 		assertEquals("kk road",address1.getArea());
 	}
 	
+	/**
+	 * This below function is used to test the testFindAllAddress and to check whether it retrieves all address 
+	 * from the database
+	 */
 	@Test
-	@Disabled
-	void testViewAddress() {
+	//@Disabled
+	void testFindallAddress() {
 		Address address1=new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 		Address address2=new Address(5, 7, "aj", "kk road", "chennai", "TN", "99");
 		List<Address> addressList = new ArrayList<>();
@@ -73,9 +86,13 @@ public class AddressServiceMokitoTest {
 	
 	}
 	
+	/**
+	 * This below function is used to test the testViewAddressbyId and to check whether it retrieves address by id
+	 * from the database
+	 */
 	@Test
-	@Disabled
-	void testViewbyId() {
+	//@Disabled
+	void testViewAddressbyId() {
 	Address address=new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 	Mockito.when(addrRep.findById(4)).thenReturn(Optional.of(address));
 	assertEquals(4,address.getId());

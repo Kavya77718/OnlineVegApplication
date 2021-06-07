@@ -51,28 +51,31 @@ class BillingServiceMockitoTest {
 		BillingDetails persistedBillingDetails = billingService.updateBill(bill);
 		assertEquals(344, persistedBillingDetails.getBillingId());
 		assertEquals("FAILED", persistedBillingDetails.getTransactionStatus());
+  }
 
-	}
 
+		@Test
+		//@Disabled
+		void testShouldViewById() {
+			BillingDetails bill = new BillingDetails(345,"DebitCard","02-01-1999","SUCCESS");
+			
+			Mockito.when(billingRepository.findById(345)).thenReturn(Optional.of(bill));
+			
+			BillingDetails  persistedBill= billingService.findById(345);
+			
+			assertEquals(345, persistedBill.getBillingId());
+			//assertEquals("", persistedBill.getDept());
+		}
+		
 	@Test
-	void testShouldViewById() {
-		BillingDetails bill = new BillingDetails(345, "DebitCard", "02-01-1999", "SUCCESS");
-
-		Mockito.when(billingRepository.findById(345)).thenReturn(Optional.of(bill));
-
-		BillingDetails persistedBill = billingService.findById(345);
-
-		assertEquals(345, persistedBill.getBillingId());
-	}
-
-	@Test
-
-	void testShouldDeleteBill() {
-		BillingDetails bill = new BillingDetails(341, "COD", "31/04/1993", "SUCCESS");
-		Mockito.when(billingRepository.findById(341)).thenReturn(Optional.of(bill));
-		billingRepository.deleteById(341);
-		BillingDetails persistedBillingDetails = billingService.deleteById(341);
-		assertEquals(341, persistedBillingDetails.getBillingId());
-		assertEquals("SUCCESS", persistedBillingDetails.getTransactionStatus());
-	}
-}
+	//@Disabled
+	void testShouldDeleteBill() 
+	{
+			BillingDetails bill= new BillingDetails(341,"COD","31/04/1993","SUCCESS");
+			Mockito.when(billingRepository.findById(341)).thenReturn(Optional.of(bill));
+			billingRepository.deleteById(341);
+			BillingDetails persistedBillingDetails = billingService.deleteById(341);
+			assertEquals(341,persistedBillingDetails.getBillingId());
+			assertEquals("SUCCESS",persistedBillingDetails.getTransactionStatus())	;
+  }
+  }
