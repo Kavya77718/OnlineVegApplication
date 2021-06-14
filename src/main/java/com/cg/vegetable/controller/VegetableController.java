@@ -21,8 +21,8 @@ import com.cg.vegetable.exception.VegetableNotFoundException;
 import com.cg.vegetable.module.Vegetable;
 import com.cg.vegetable.service.IVegetableService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@CrossOrigin
 @RequestMapping("/api")
 public class VegetableController {
 
@@ -39,6 +39,7 @@ public class VegetableController {
 	@Autowired
 	IVegetableService vegsev;
 
+	
 	/**
 	 * This below function is used to create a new vegetable and redirects to the
 	 * vegetable service

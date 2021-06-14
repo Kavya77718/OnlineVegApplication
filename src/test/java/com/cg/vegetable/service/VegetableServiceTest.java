@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -73,7 +74,7 @@ class VegetableServiceTest {
 	@Test
 	@Disabled
 	void testCreateVegetable() {
-		Vegetable vegetable = new Vegetable(10, "Cucumber", "Stem", 80, 25);
+		Vegetable vegetable = new Vegetable(10, "Cucumber", "Stem", 80, 25,"Cucumber has been found to decrease bad cholesterol and blood sugar levels as well.");
 		Vegetable persistedveg = es.save(vegetable);
 		assertEquals(10, persistedveg.getVegId());
 		assertEquals("Cucumber", persistedveg.getName());

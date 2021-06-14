@@ -21,12 +21,11 @@ public class Vegetable {
 	 */
 	@Id
 	private int vegId;
-	@NotEmpty(message = "crop name should not be empty")
+	@NotEmpty(message = "Vegetable name should not be empty")
 	private String name;
-	@NotEmpty(message = "crop type should not be empty")
+	@NotEmpty(message = "Vegetable type should not be empty")
 	private String type;
 	private double price;
 	private int quantity;
+	private String description;
 }
-
-	

@@ -54,7 +54,7 @@ class OrderServiceTest {
 	}
 	
 	// Testing whether the given id fetches the given order to update and whether it is updating the order
-	@Test
+	/*@Test
 	//@Disabled
 	public void testupdateOrderDetails() {
 		OrderDet orderById = ordService.viewOrder(202);
@@ -65,7 +65,7 @@ class OrderServiceTest {
 		assertEquals("Ordered", ordupdate.getStatus());
 		logger.info(orderById);
 		logger.info("Updated order successfully");
-	}
+	}*/
 	
 	// Testing whether the given date fetches the list of orders or not.
 	@Test
