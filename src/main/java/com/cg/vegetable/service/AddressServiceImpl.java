@@ -62,20 +62,25 @@ public class AddressServiceImpl implements IAddressService {
 	 * This below function update is used to update the retrieved address and
 	 * redirects to addressRepo.
 	 */
+
 	@Override
-	public Address update(Address address) {
-		logger.info("update address by id");
-		Optional<Address> addr = addrRepo.findById(address.getId());
-		if (!addr.isPresent()) {
+	public Address update(Address address, int id) {
+		logger.info("Updating the address details");
+		Optional<Address> addr = addrRepo.findById(id);
+		if(!addr.isPresent()) {
 			return null;
 		}
-
 		addr.get().setId(address.getId());
+		addr.get().setFlatNo(address.getFlatNo());
+		addr.get().setBuildingName(address.getBuildingName());
 		addr.get().setArea(address.getArea());
 		addr.get().setLocation(address.getLocation());
-
+		addr.get().setState(address.getState());
+		addr.get().setPincode(address.getPincode());
 		return addrRepo.save(addr.get());
+		
 	}
+
 
 	/*
 	 * This below function deleteAddressById is used to delete the address and
@@ -91,4 +96,5 @@ public class AddressServiceImpl implements IAddressService {
 		addrRepo.delete(address.get());
 		return address.get();
 	}
+
 }

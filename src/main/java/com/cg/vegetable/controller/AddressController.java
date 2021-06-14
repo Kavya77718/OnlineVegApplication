@@ -115,13 +115,12 @@ public class AddressController {
 	 * @throws AddressNotFoundException
 	 */
 	@PutMapping("/address")
-	public ResponseEntity<Address> update(@RequestBody Address address) {
-		logger.info("delete address by id");
-		if (addrService.update(address) == null) {
-			throw new AddressNotFoundException("AddressId Not Found:" + address.getId());
+	public ResponseEntity<Address> update(@PathVariable("id") int id,@Valid @RequestBody Address address) {
+		logger.info("Updating address details");
+		if (addrService.update(address,id) == null) {
+			throw new AddressNotFoundException("AddressId Not Found:" + id);
 		}
-		Address addr = addrService.update(address);
-		return ResponseEntity.ok(addr);
+		return ResponseEntity.ok().body(addrService.update(address,id));
 	}
 
 }

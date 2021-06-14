@@ -5,10 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-
-//@Getter
-//@Setter
-//@ToString
 @Data
 public class FeedbackErrorResponse {
 	private int status;

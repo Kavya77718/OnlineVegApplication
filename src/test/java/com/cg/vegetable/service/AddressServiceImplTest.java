@@ -82,12 +82,17 @@ public class AddressServiceImplTest {
 	@Test
 	@Disabled
 	void testUpdateAddress() {
-		logger.info("update address by id");
-		Address address=new Address();
-		address.setId(10);
-		address.setLocation("madurai");
-		Address addr=addrService.update(address);
-		assertEquals("madurai",addr.getLocation());
+		Address address = new Address();
+		address.setId(102);
+		address.setFlatNo(87);
+		address.setBuildingName("lon");
+		address.setArea("Nehru street");
+		address.setLocation("Pondi");
+		address.setState("tn");
+		address.setPincode("890");
+		Address addr = addrService.update(address,102);
+		logger.info(addr);
+		assertEquals("Pondi", addr.getLocation());
 	}	
 	
 }

@@ -131,5 +131,12 @@ public class CustomerController {
 		return ResponseEntity.ok(cust);
 
 	}
+	
+	@GetMapping("/customer/name/{name}")
+	public ResponseEntity<List<Customer>> findAllByName(@PathVariable("name") String name){
+		List<Customer> cust = custService.findAllByName(name);
+		return ResponseEntity.ok(cust);
+	}
+	
 
 }

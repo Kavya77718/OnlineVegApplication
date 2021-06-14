@@ -99,4 +99,16 @@ public class CustomerServiceImpl implements ICustomerService {
 		return custRepo.save(cus);
 	}
 
-}
+	@Override
+	public List<Customer> findAllByName(String name) {
+		List<Customer> customerList = custRepo.findAllByName(name);
+		if(customerList.isEmpty()) {
+		return null;
+		}
+		
+		logger.info(customerList);
+		return custRepo.findAllByName(name);
+	}
+	}
+
+	

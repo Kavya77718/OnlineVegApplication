@@ -2,6 +2,7 @@ package com.cg.vegetable.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -70,18 +71,6 @@ public class CustomerServiceImplTest {
 		System.out.println(persistedCust);
 		assertEquals("Kavya",persistedCust.getName());
 	}
-
-
-	@Test
-	@Disabled
-	void testRemoveCustomer() {
-		Customer customer1 = new Customer(1);
-		Customer persistedCust = custService.removeCustomer(customer1);
-		assertEquals(1, persistedCust.getCustomerId());
-		assertEquals("Monisha", persistedCust.getName());
-	}
-
-
 	
 	/**
 	 * This below function is used to test the testDeleteCustomerById and to check whether it deletes customer by id

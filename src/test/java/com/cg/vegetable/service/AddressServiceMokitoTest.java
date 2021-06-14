@@ -64,7 +64,7 @@ public class AddressServiceMokitoTest {
 		Address address=new Address(4, 7, "aj", "kk road", "Bangalore", "TN", "98");
 		Mockito.when(addrRep.findById(4)).thenReturn(Optional.of(address));
 		Mockito.when(addrRep.save(address)).thenReturn(address);
-		Address address1=addrService.update(address);
+		Address address1=addrService.update(address, 4);
 		assertEquals("kk road",address1.getArea());
 	}
 	

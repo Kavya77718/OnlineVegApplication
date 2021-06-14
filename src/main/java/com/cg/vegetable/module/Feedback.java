@@ -2,6 +2,7 @@ package com.cg.vegetable.module;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,6 +23,7 @@ public class Feedback {
 	 * Creating instance variable for the class Feedback Entity
 	 */
 	@Id
+	@GeneratedValue
 	private int feedbackId;  
 	@NotNull(message = "Rating cannot be empty")
 	@Range(min=1, max=10, message= "Please rate out of 10")
@@ -69,11 +71,7 @@ public class Feedback {
 	public int getFeedbackId() {
 		return feedbackId;
 	}
-	
-	public void setFeedbackId(int feedbackId) {
-		this.feedbackId = feedbackId;
-	}
-		
+			
 	public int getRating() {
 		return rating;
 	}

@@ -22,4 +22,6 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Integer > {
 	
 	@Query(value = "select * from feedback inner join vegetable on feedback.vegetables_id = vegetable.vegetables_id  where vegetable.vegetables_id =:v", nativeQuery = true)
 	List<Feedback> viewAllFeedback(@Param("v") int vegetableId);
+	
+	
 }

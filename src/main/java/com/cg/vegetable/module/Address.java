@@ -1,6 +1,7 @@
 package com.cg.vegetable.module;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,6 +17,7 @@ public class Address {
 	 * Creating instance variable for the class Address Entity
 	 */
 	@Id
+	@GeneratedValue
 	private int id;
 	private int flatNo;
 	private String buildingName;
@@ -28,8 +30,6 @@ public class Address {
 	@NotEmpty(message = "Pincode cannot be empty")
 	private String pincode;
 
-	public Address(int id, int flatNo, String buildingName, String area, String location, String state,
-			String pincode) {
 	/**
 	 * Creating no arg constructor.
 	 */

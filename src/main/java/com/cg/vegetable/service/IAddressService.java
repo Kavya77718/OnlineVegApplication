@@ -9,6 +9,6 @@ public interface IAddressService {
 	Address findAddressById(int id);
 	List<Address> findAllAddresses();
 	Address save(Address address);
-	Address update(Address address);
+	Address update(Address address, int id);
 	Address deleteAddressById(int id);
 }
