@@ -23,6 +23,7 @@ public class BillingService implements IBillingService {
 	IBillingRepository billRepo;
 
 	// addBill
+
 	@Override
 	public BillingDetails addBill(BillingDetails bill) {
 		logger.info("Adding Billing Details To The Database");
@@ -67,9 +68,7 @@ public class BillingService implements IBillingService {
 			return null;
 		}
 		vegBill.get().setBillingId(bill.getBillingId());
-		vegBill.get().setTransactionMode(bill.getTransactionMode());
-		vegBill.get().setTransactionStatus(bill.getTransactionStatus());
-		vegBill.get().setTransactionDate(bill.getTransactionDate());
+		
 		return billRepo.save(vegBill.get());
 	}
 

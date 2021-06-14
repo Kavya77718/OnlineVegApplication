@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.vegetable.billdto.BillRequest;
 import com.cg.vegetable.exception.VegBillingIdNotFoundException;
 import com.cg.vegetable.module.BillingDetails;
 import com.cg.vegetable.module.VegErrorResponse;
@@ -41,12 +42,12 @@ public class VegBillController {
 	 */
 
 	// addBill
-	@PostMapping("/billing")
+	/*@PostMapping("/billing")
 	public ResponseEntity<BillingDetails> addBill(@Valid @RequestBody BillingDetails bill) {
 		logger.info("Adding Bill in database" + bill);
 		BillingDetails billing = bs.addBill(bill);
 		return ResponseEntity.ok(billing);
-	}
+	}*/
 
 	/**
 	 * This below function is used to get all the bills and redirects to the billing
@@ -106,6 +107,21 @@ public class VegBillController {
 		}
 		BillingDetails billing = bs.updateBill(billingId, bill);
 		return ResponseEntity.ok(billing);
-
 	}
+		
+	
+	
+	
+	
+	
+	/*//add bill by billRequestdto
+		@PostMapping("/addbill/")  
+			public ResponseEntity<BillingDetails> addBill(@Valid @RequestBody BillRequest bill)
+    
+			{
+			logger.info("Add Bill to the Database");
+			return new ResponseEntity<>(bs.addBill(bill),HttpStatus.OK);
+			}*/
+					
+
 }

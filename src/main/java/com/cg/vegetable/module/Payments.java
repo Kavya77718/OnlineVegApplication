@@ -1,5 +1,6 @@
 package com.cg.vegetable.module;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,10 +21,12 @@ public class Payments {
 	@Id
 	@GeneratedValue
 	private long paymentId;
-	private String paymentType;
+	private String transactionMode;
 	private double itemTotal;
 	private double shippingFee;
 	private double totalPrice;
+	private String transactionStatus;
+	private LocalDate transactionDate;
 
 	//OneToOne mapping
 	@OneToOne(cascade = CascadeType.ALL)
@@ -31,13 +34,16 @@ public class Payments {
 	private OrderDet orderNo;
 
 	//parameterized constructor
-	public Payments(long paymentId, String paymentType, double itemTotal, double shippingFee, double totalPrice) {
+	public Payments(long paymentId, String transactionMode, double itemTotal, double shippingFee, double totalPrice, String transactionStatus, LocalDate transactionDate) {
 		super();
 		this.paymentId = paymentId;
-		this.paymentType = paymentType;
+		this.transactionMode = transactionMode;
 		this.itemTotal = itemTotal;
 		this.shippingFee = shippingFee;
 		this.totalPrice = totalPrice;
+		this.transactionStatus=transactionStatus;
+		this.transactionDate=transactionDate;
+		
 	}
 
 }
