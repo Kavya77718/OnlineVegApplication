@@ -29,5 +29,3 @@ public class Vegetable {
 	private int quantity;
 	private String description;
 }
-
-	

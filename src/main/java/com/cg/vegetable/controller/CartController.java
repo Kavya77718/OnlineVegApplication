@@ -34,8 +34,7 @@ public class CartController {
 	 */
 	@Autowired
 	ICartService cartser;
-	
-	
+
 	@Autowired
 	IVegetableRepository vegRepo;
 
@@ -94,16 +93,16 @@ public class CartController {
 		if (car == null) {
 			throw new CartNotFoundException("Cart  not found with this id to delete" + cartId);
 		}
-		return  ResponseEntity.ok(car);
+		return ResponseEntity.ok(car);
 	}
-	
+
 	@PostMapping("/addcarttocustomer/{id}")
 	public ResponseEntity<Cart> addCartToCustomer(@PathVariable("id") int custId) {
 		logger.info("Adding cart to a customer");
 		Cart cart = cartser.addCartToCustomer(custId);
 		return ResponseEntity.ok(cart);
 	}
-	
+
 	@PostMapping("/shoppingCart/addveg/{vegId}/{custId})")
 	public String addVegToCart(@PathVariable("vegId") int vegId, @PathVariable("custId") int customerId) {
 		logger.info("Adding products to the cart");
@@ -114,17 +113,17 @@ public class CartController {
 		}
 		return "out of stock";
 	}
-	
+
 	@GetMapping("/getproducts/cart/{custId}")
 	public List<Vegetable> getProductsFromCart(@PathVariable("custId") int custId) {
 		logger.info("Getting products in the cart");
 		return cartser.getProductsInCart(custId);
 
 	}
+
 	@GetMapping("/totalcost/{custId}")
 	public Cart gettotalCost(@PathVariable("custId") int custId) {
 		return cartser.getTotalcost(custId);
 	}
-
 
 }

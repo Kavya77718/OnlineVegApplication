@@ -38,16 +38,18 @@ public class Cart {
 	private int quantity;
 	@NonNull
 	private double totalAmount;
-	
+
 	/**
 	 * CustomerEntity is mapped to CartEntity
 	 * 
 	 */
-	/*@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "custId")
-	private Customer customer;
-	*/
+	/*
+	 * @JsonIgnore
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "custId") private Customer customer;
+	 */
 	/**
 	 * CartEntity is mapped to VegetableEntity
 	 */
@@ -55,6 +57,5 @@ public class Cart {
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "veg_Id", referencedColumnName = "vegId")
 	private List<Vegetable> vegetables = new ArrayList<>();
-
 
 }
