@@ -4,12 +4,16 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Customer Entity
@@ -22,6 +26,7 @@ public class Customer {
 	 * Creating instance variable for the class Customer Entity
 	 */
 	@Id
+	@GeneratedValue
 	private int customerId;
 	@NotEmpty(message = "Please enter your name to proceed")
 	private String name;
@@ -38,6 +43,13 @@ public class Customer {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="cust_id")
 	private List<Address> address;
+	
+	//One to One Mapping
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="cart_Id", referencedColumnName = "cartId")
+	private Cart cart;
+		
 	
 	/**
 	 * Creating no arg constructor.
@@ -107,18 +119,28 @@ public class Customer {
 	public void setAddress(List<Address> address2) {
 		this.address = address2;
 	}
+	
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	/**
 	 * Creating toString
 	 */
+	
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", mobileNumber=" + mobileNumber + ", emailId="
-				+ emailId + ", address=" + address + "]";
+				+ emailId + ", address=" + address + ", cart=" + cart + "]";
 	}
 
 	
 }
 
 
-}
+

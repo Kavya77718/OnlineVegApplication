@@ -30,7 +30,7 @@ class CartServiceMockitoTest {
 	void init() {
 		MockitoAnnotations.openMocks(this);
 	}
-
+/*
 	@Test
 	void testAdd() {
 		Cart cart = new Cart(6);
@@ -60,5 +60,5 @@ class CartServiceMockitoTest {
 		List<Cart> cartlist = cartrepo.findAll();
 		assertEquals(6, cartlist.size());
 	}
-
+*/
 }

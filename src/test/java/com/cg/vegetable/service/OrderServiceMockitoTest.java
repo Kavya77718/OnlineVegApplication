@@ -67,7 +67,8 @@ class OrderServiceMockitoTest {
 	}
 	
 	// Testing whether the given id fetches the given order to update and whether it is updating the order
-	@Test
+	/*@Test
+	
 	//@Disabled
 	public void testupdateOrderDetails() {
 		OrderDet orderById = new OrderDet(11,200.00,"2020-09-08","Ordered");
@@ -75,12 +76,12 @@ class OrderServiceMockitoTest {
 		Mockito.when(iordrep.findById(11)).thenReturn(Optional.of(orderById));
 		Mockito.when(iordrep.save(orderById)).thenReturn(orderById);
 		
-		OrderDet ordupdate = ordService.updateOrderDetails(orderById);
+	OrderDet ordupdate = ordService.updateOrderDetails(orderById);
 		
 		assertEquals("2020-09-08",ordupdate.getOrderDate());
 		assertEquals("Ordered", ordupdate.getStatus());
 	}
-	
+	*/
 	// Testing whether the given id fetches and deleted the given order or not
 	@Test
 	@Disabled

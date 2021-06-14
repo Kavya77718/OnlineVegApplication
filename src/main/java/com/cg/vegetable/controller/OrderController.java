@@ -63,7 +63,7 @@ public class OrderController {
 	}
 	
 	//using put Mapping for updating order by id
-	@PutMapping("/order/{id}") 
+	/*@PutMapping("/order/{id}") 
 	public ResponseEntity<OrderDet> updateOrderDetails(@PathVariable("id") int orderid, @RequestBody OrderDet order) {
 		logger.info("updating order by id");
 		if( iord.viewOrder(orderid)==null) {
@@ -71,7 +71,7 @@ public class OrderController {
 		}
 		OrderDet updateord = iord.updateOrderDetails(order);
 		return ResponseEntity.ok(updateord);
-	}
+	}*/
 	
 	//Get list of orders by passing customer id
 	@GetMapping("/order/customer/{customerid}")

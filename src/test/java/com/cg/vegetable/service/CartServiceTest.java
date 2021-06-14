@@ -28,7 +28,8 @@ class CartServiceTest {
 	/**
 	 * This below function is used to Test the method AddtoCart and redirects to the
 	 * cart service
-	 */
+*/
+	/*
 	@Test
 	@Disabled
 	void testaddToCart() {
@@ -37,7 +38,7 @@ class CartServiceTest {
 		assertEquals(3, persistedCust.getCartId());
 		logger.info("Added to the cart successfully" + cart);
 
-	}
+	}*/
 
 	/**
 	 * This below function is used to Test the method ViewAllItems and redirects to

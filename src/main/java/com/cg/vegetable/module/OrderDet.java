@@ -27,11 +27,13 @@ public class OrderDet {
 	private String status;
 	
 	//OneToMany mapping 
+	/*@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="Order_No")
-	private List<Vegetable> vegList;
+	private List<Vegetable> vegList;*/
 	
 	//ManyToOne mapping
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id",referencedColumnName = "customerId")
 	private Customer customer;
