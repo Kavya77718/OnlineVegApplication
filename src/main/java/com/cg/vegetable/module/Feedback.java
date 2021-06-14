@@ -12,10 +12,17 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  * Feedback Entity
  *
  */
+@Getter
+@Setter
+@ToString
 @Entity
 public class Feedback {
 	
@@ -65,53 +72,7 @@ public class Feedback {
 		this.feedbackId = feedbackId;
 	}
 
-	/**
-	 * getters and setters
-	 */
-	public int getFeedbackId() {
-		return feedbackId;
-	}
-			
-	public int getRating() {
-		return rating;
-	}
-	
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-	
-	public String getComments() {
-		return comments;
-	}
-	
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-	
-	public Customer getCustomer() {
-		return customer;
-	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Vegetable getVegetable() {
-		return vegetable;
-	}
-
-	public void setVegetable(Vegetable vegetable) {
-		this.vegetable = vegetable;
-	}
-
-	/**
-	 * Creating toString
-	 */
-	@Override
-	public String toString() {
-		return "Feedback [feedbackId=" + feedbackId + ", rating=" + rating + ", comments=" + comments + ", customer="
-				+ customer + ", vegetable=" + vegetable + "]";
-	}
 
 	
 	
