@@ -52,8 +52,8 @@ class BillingServiceMockitoTest {
 	@Test
 	// @Disabled
 	void testViewAllBills() {
-		BillingDetails bill1 = new BillingDetails(348, "COD", "02-01-1991", "SUCCESS");
-		BillingDetails bill2 = new BillingDetails(349, "ONLINE", "02-01-1992", "SUCCESS");
+		BillingDetails bill1 = new BillingDetails(348);
+		BillingDetails bill2 = new BillingDetails(349);
 		List<BillingDetails> billList = new ArrayList<>();
 		billList.add(bill1);
 		billList.add(bill2);
@@ -70,13 +70,11 @@ class BillingServiceMockitoTest {
 	@Test
 
 	void testShouldAddBill() {
-		BillingDetails bill = new BillingDetails(343, "COD", "02-01-1997", "SUCCESS");
+		BillingDetails bill = new BillingDetails(343);
 		Mockito.when(billingRepository.save(bill)).thenReturn(bill);
 		BillingDetails persistedBillingDetails = billingService.save(bill);
 		assertEquals(343, persistedBillingDetails.getBillingId());
-		assertEquals("COD", persistedBillingDetails.getTransactionMode());
-		assertEquals("02-01-1997", persistedBillingDetails.getTransactionDate());
-		assertEquals("SUCCESS", persistedBillingDetails.getTransactionStatus());
+		
 
 	}
 
@@ -87,12 +85,12 @@ class BillingServiceMockitoTest {
 	@Test
 
 	void testShouldUpdateBill() {
-		BillingDetails bill = new BillingDetails(344, "DebitCard", "02-01-1999", "FAILED");
+		BillingDetails bill = new BillingDetails(344);
 		Mockito.when(billingRepository.findById(344)).thenReturn(Optional.of(bill));
 		Mockito.when(billingRepository.save(bill)).thenReturn(bill);
 		BillingDetails persistedBillingDetails = billingService.updateBill(344, bill);
 		assertEquals(344, persistedBillingDetails.getBillingId());
-		assertEquals("FAILED", persistedBillingDetails.getTransactionStatus());
+		
 
 	}
 
@@ -103,7 +101,7 @@ class BillingServiceMockitoTest {
 	@Test
 	@Disabled
 	void testShouldViewById() {
-		BillingDetails bill = new BillingDetails(345, "DebitCard", "02-01-1999", "SUCCESS");
+		BillingDetails bill = new BillingDetails(345);
 
 		Mockito.when(billingRepository.findById(345)).thenReturn(Optional.of(bill));
 
@@ -119,11 +117,11 @@ class BillingServiceMockitoTest {
 	@Test
 	@Disabled
 	void testShouldDeleteBill() {
-		BillingDetails bill = new BillingDetails(341, "COD", "31/04/1993", "SUCCESS");
+		BillingDetails bill = new BillingDetails(341);
 		Mockito.when(billingRepository.findById(341)).thenReturn(Optional.of(bill));
 		billingRepository.deleteById(341);
 		BillingDetails persistedBillingDetails = billingService.deleteById(341);
 		assertEquals(341, persistedBillingDetails.getBillingId());
-		assertEquals("SUCCESS", persistedBillingDetails.getTransactionStatus());
+	
 	}
 }

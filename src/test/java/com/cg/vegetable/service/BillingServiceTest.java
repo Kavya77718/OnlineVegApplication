@@ -32,12 +32,9 @@ class BillingServiceTest {
 	@Disabled
 	void testShouldAddBill() {
 
-		BillingDetails bill = new BillingDetails(2, "COD", "02-01-1997", "SUCCESS");
+		BillingDetails bill = new BillingDetails(2);
 		BillingDetails persistedBill = billService.save(bill);
 		assertEquals(2, persistedBill.getBillingId());
-		assertEquals("COD", persistedBill.getTransactionMode());
-		assertEquals("02/01/1995", persistedBill.getTransactionDate());
-		assertEquals("SUCCESS", persistedBill.getTransactionStatus());
 		logger.info(bill);
 		logger.info("Added Bill Successfully");
 	}
@@ -50,12 +47,9 @@ class BillingServiceTest {
 	// @Disabled
 	void testShouldUpdateBill() {
 
-		BillingDetails bill = new BillingDetails(2, "COD", "02-01-1997", "SUCCESS");
+		BillingDetails bill = new BillingDetails(2);
 		BillingDetails persistedBill = billService.updateBill(2, bill);
 		assertEquals(2, persistedBill.getBillingId());
-		assertEquals("COD", persistedBill.getTransactionMode());
-		assertEquals("02/01/2001", persistedBill.getTransactionDate());
-		assertEquals("SUCCESS", persistedBill.getTransactionStatus());
 		logger.info(bill);
 		logger.info("Updated Bill Successfully");
 	}
@@ -81,9 +75,6 @@ class BillingServiceTest {
 	// @Disabled
 	void testShouldViewById() {
 		BillingDetails details = billService.findById(2);
-		assertEquals("sgdg", details.getTransactionMode());
-		assertEquals("02-01-1999", details.getTransactionDate());
-		assertEquals("SUCCESS", details.getTransactionStatus());
 		logger.info(details);
 		logger.info("Viewing Bill By Id Successfully");
 	}
@@ -97,9 +88,6 @@ class BillingServiceTest {
 	void testDeleteBill() {
 		BillingDetails persistedBill = billService.deleteById(2);
 		assertEquals(346, persistedBill.getBillingId());
-		assertEquals("COD", persistedBill.getTransactionMode());
-		assertEquals("02/01/1995", persistedBill.getTransactionDate());
-		assertEquals("SUCCESS", persistedBill.getTransactionStatus());
 		logger.info(persistedBill);
 		logger.info("Deleted Bill Successfully");
 	}

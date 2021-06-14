@@ -1,6 +1,7 @@
 package com.cg.vegetable.module;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
  *
  */
 
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -27,9 +29,10 @@ public class BillingDetails {
 	 * creating instance variables for the class BillingEntity
 	 */
 	@Id
+	@GeneratedValue
 	private int billingId;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToOne(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
 	/**
 	 * BillingEntity is mapped to OrderEntity
@@ -37,26 +40,32 @@ public class BillingDetails {
 	 */
 	@JoinColumn(name = "order_id", referencedColumnName = "orderNo")
 	private OrderDet order;
-	@JsonIgnore
+
+	//@JsonIgnore
 	/**
 	 * BillingEntity is mapped to CustomerEntity
 	 * 
 	 */
 	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "customer_id", referencedColumnName = "customerId")
+	@JoinColumn(name = "customerName", referencedColumnName = "Name")
+	//@JoinColumn(name = "", referencedColumnName = "Name")
 	private Customer customer;
-	@NotEmpty(message = "transactionMode should not be empty")
-	private String transactionMode;
-	@NotEmpty(message = "transactionDate should not be empty")
-	private String transactionDate;
-	@NotEmpty(message = "transactionStatus should not be empty")
-	private String transactionStatus;
+	
+	//@JsonIgnore
+	@OneToOne(targetEntity = Payments.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "transactionStatus", referencedColumnName = "transactionStatus")
+	@JoinColumn(name = "transactionMode", referencedColumnName = "transactionMode")
+	@JoinColumn(name = "transactionDate", referencedColumnName = "transactionDate")
+	/**
+	 * BillingEntity is mapped to PaymentEntity
+	 * 
+	 */
+	
+	private Payments payments;
 
-	public BillingDetails(int billingId, String transactionMode, String transactionDate, String transactionStatus) {
+	public BillingDetails(int billingId) {
 		super();
 		this.billingId = billingId;
-		this.transactionMode = transactionMode;
-		this.transactionDate = transactionDate;
-		this.transactionStatus = transactionStatus;
+
 	}
 }

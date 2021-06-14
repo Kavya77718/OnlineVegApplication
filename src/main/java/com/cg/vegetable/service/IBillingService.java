@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.cg.vegetable.billdto.BillRequest;
 import com.cg.vegetable.module.BillingDetails;
 
 @Service
 public interface IBillingService {
-	BillingDetails addBill(BillingDetails bill);
 
+
+	BillingDetails addBill(BillingDetails bill);
+	
 	BillingDetails viewBill(int billingId);
 
 	BillingDetails save(BillingDetails details);
@@ -21,4 +24,5 @@ public interface IBillingService {
 	BillingDetails updateBill(int billingId, BillingDetails bill);
 
 	List<BillingDetails> viewAllBills();
+
 }

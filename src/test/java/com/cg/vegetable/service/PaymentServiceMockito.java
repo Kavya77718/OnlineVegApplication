@@ -1,6 +1,7 @@
 package com.cg.vegetable.service;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +37,7 @@ class PaymentServiceMockito {
 	@Test
 	//@Disabled
 	public void testfindPaymentById() {
-		Payments payById = new Payments(23,"Cash on Delivery",2.00, 0.00, 300.00);
+		Payments payById = new Payments(23,"Cash on Delivery",2.00, 0.00, 300.00,"SUCCESS",LocalDate.of(2021, 05, 06));
 		
 		Mockito.when(iordrep.findById((long) 23)).thenReturn(Optional.of(payById));
 		
@@ -51,7 +52,7 @@ class PaymentServiceMockito {
 	@Test
 	//@Disabled
 	public void testsavePaymentDetails() {
-		Payments payById = new Payments(26,"Cash on Delivery",2.00, 0.00, 500.00);
+		Payments payById = new Payments(26,"Cash on Delivery",2.00, 0.00, 500.00,"SUCCESS",LocalDate.of(2021, 05, 06));
 		
 		Mockito.when(iordrep.findById((long) 26)).thenReturn(Optional.of(payById));
 		Mockito.when(iordrep.save(payById)).thenReturn(payById);
@@ -65,7 +66,7 @@ class PaymentServiceMockito {
 	@Test
 	//@Disabled
 	public void testDeletePaymentById() {
-		Payments payById = new Payments(28,"Cash on Delivery",2.00, 0.00, 500.00);
+		Payments payById = new Payments(28,"Cash on Delivery",2.00, 0.00, 500.00,"SUCCESS",LocalDate.of(2021, 05, 06));
 		
 		Mockito.when(iordrep.findById((long) 28)).thenReturn(Optional.of(payById));
 		iordrep.deleteById((long) 28);
@@ -79,8 +80,8 @@ class PaymentServiceMockito {
 	@Test
 	//@Disabled
 	void testFindAllPayments() {
-		Payments payById1 = new Payments(30,"Cash on Delivery",2.00, 0.00, 500.00);
-		Payments payById2 = new Payments(31,"Cash on Delivery",2.00, 0.00, 300.00);
+		Payments payById1 = new Payments(30,"Cash on Delivery",2.00, 0.00, 500.00,"SUCCESS",LocalDate.of(2021, 05, 06));
+		Payments payById2 = new Payments(31,"Cash on Delivery",2.00, 0.00, 300.00,"SUCCESS",LocalDate.of(2021, 05, 06));
 		
 		List<Payments> allOrders = new ArrayList<>();
 		allOrders.add(payById1);

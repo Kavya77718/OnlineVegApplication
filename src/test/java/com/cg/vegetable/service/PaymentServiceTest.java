@@ -27,11 +27,11 @@ class PaymentServiceTest {
 	//@Disabled
 	public void testsavePaymentDetails() {
 		Payments payById = iservice.findPaymentById(4);
-		payById.setPaymentType("PhonePe");
+		payById.setTransactionMode("PhonePe");
 		payById.setShippingFee(30.00);
 		payById.setTotalPrice(130.00);
 		Payments payupdate = iservice.save(payById);
-		assertEquals("PhonePe",payupdate.getPaymentType());
+		assertEquals("PhonePe",payupdate.getTransactionMode());
 		assertEquals(30.00, payupdate.getShippingFee());
 		assertEquals(130.00, payupdate.getTotalPrice());
 		logger.info(payById);
@@ -66,7 +66,7 @@ class PaymentServiceTest {
 	void testdeletePaymentById() {
 		Payments persistedPay = iservice.deletePaymentById(1);
 		assertEquals(1,persistedPay.getPaymentId());
-		assertEquals("Cash On Delivery",persistedPay.getPaymentType());
+		assertEquals("Cash On Delivery",persistedPay.getTransactionMode());
 		assertEquals(2,persistedPay.getItemTotal());
 		logger.info(persistedPay);
 		logger.info("deleted order successfully");
