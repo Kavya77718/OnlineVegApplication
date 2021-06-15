@@ -12,6 +12,6 @@ public interface ICustomerService {
 	public Customer deleteCustomerbyId(int customerId);
 	public List<Customer> findAllCustomer();
 	public List<Customer> findAllByName(String name);
-	
+	public Customer findCustomerByEmailId(String emailId);
 
 }

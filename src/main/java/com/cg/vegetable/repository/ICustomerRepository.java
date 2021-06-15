@@ -1,5 +1,6 @@
 package com.cg.vegetable.repository;
 
+
 /**
  * User Repository interface extends
  * {@link org.springframework.data.jpa.repository.JpaRepository}.
@@ -18,8 +19,6 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
 	@Query(value = "select * from address inner join customer on address.cust_id = customer.customer_id where address.location =:l", nativeQuery = true)
 	List<Customer> viewCustomerList(@Param("l") String location);
-	
+	Customer findCustomerByEmailId(String email);
 	List<Customer> findAllByName(String name);
-	
-
 }

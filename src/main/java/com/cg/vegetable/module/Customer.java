@@ -34,7 +34,8 @@ public class Customer {
 	@NotEmpty(message = "Please enter your email Id to proceed")
 	@Email(message = "Invalid Email")
 	private String emailId;
-	
+	@NotEmpty
+	private String customerPassword;
 	/**
 	 * CustomerEntity is mapped to AddressEntity
 	 */
@@ -50,13 +51,16 @@ public class Customer {
 	
 	/**
 	 * Creating arg constructor.
+	 * @param customerPassword 
 	 */
-	public Customer(int customerId, String name, String mobileNumber, String emailId) {
-		this.customerId = customerId;
+	public Customer(String name, String mobileNumber, String emailId, String customerPassword) {
+	
 		this.name = name;
 		this.mobileNumber = mobileNumber;
 		this.emailId = emailId;
+		this.customerPassword=customerPassword;
 	}
+	
 	
 	public Customer(int customerId) {
 		this.customerId = customerId;
@@ -111,17 +115,24 @@ public class Customer {
 		this.address = address2;
 	}
 
+	public String getCustomerPassword() {
+		return customerPassword;
+	}
+	public void setCustomerPassword(String customerPassword) {
+		this.customerPassword = customerPassword;
+	}
+
+
 	/**
 	 * Creating toString
 	 */
+	
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", mobileNumber=" + mobileNumber + ", emailId="
-				+ emailId + ", address=" + address + "]";
+				+ emailId + ", customerPassword=" + customerPassword + ", address=" + address + "]";
 	}
+
 
 	
 }
-
-
-

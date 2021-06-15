@@ -3,8 +3,6 @@ package com.cg.vegetable.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
-import com.cg.vegetable.billdto.BillRequest;
 import com.cg.vegetable.module.BillingDetails;
 
 @Service

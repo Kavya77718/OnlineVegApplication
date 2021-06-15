@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.cg.vegetable.module.Customer;
 import com.cg.vegetable.module.Feedback;
+import com.cg.vegetable.module.Vegetable;
+import com.cg.vegetable.repository.ICustomerRepository;
 import com.cg.vegetable.repository.IFeedbackRepository;
+import com.cg.vegetable.repository.IVegetableRepository;
 
 @Service
 public class FeedbackServiceImpl implements IFeedbackService {
@@ -26,6 +29,11 @@ public class FeedbackServiceImpl implements IFeedbackService {
 	@Autowired
 	IFeedbackRepository feedRepo;
 
+	@Autowired
+	ICustomerRepository customerRepo;
+	
+	@Autowired
+	IVegetableRepository vegRepo;
 	/*
 	 * This below function addFeedback is used to create new feedback and redirects
 	 * to feedRepo.
@@ -33,6 +41,22 @@ public class FeedbackServiceImpl implements IFeedbackService {
 	@Override
 	public Feedback addFeedback(Feedback fdk) {
 		logger.info("adding feedback");
+		return feedRepo.save(fdk);
+	}
+
+	
+
+	@Override
+	public Feedback addFeedback(int customerId, int vegId, int rating,String comments) {
+		logger.info("Adding Feedback");
+		Feedback fdk = new Feedback();
+		Optional<Customer> cust = customerRepo.findById(customerId);
+        fdk.setCustomer(cust.get());	
+        Optional<Vegetable> veg = vegRepo.findById(vegId);
+        fdk.setVegetable(veg.get());
+		logger.info("adding feedback");
+		fdk.setRating(rating);
+		fdk.setComments(comments);
 		return feedRepo.save(fdk);
 	}
 

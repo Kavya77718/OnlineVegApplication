@@ -109,6 +109,13 @@ public class CustomerServiceImpl implements ICustomerService {
 		logger.info(customerList);
 		return custRepo.findAllByName(name);
 	}
+
+	@Override
+	public Customer findCustomerByEmailId(String emailId) {
+		return custRepo.findCustomerByEmailId(emailId);
+	}
+
+	
 	}
 
 	

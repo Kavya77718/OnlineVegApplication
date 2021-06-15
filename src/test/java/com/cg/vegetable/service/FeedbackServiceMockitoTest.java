@@ -44,7 +44,7 @@ import com.cg.vegetable.module.Customer;
 	//@Disabled
 	void testAddFeedback() {
 		Feedback feedback = new Feedback(5, 10, "good");
-		Customer customer = new Customer(1,"Kavya", "886535214", "abcd@g.com");
+		Customer customer = new Customer("Kavya", "886535214", "abcd@g.com", "password");
 		feedback.setCustomer(customer);
 		Mockito.when(feedRep.save(feedback)).thenReturn(feedback);
 		Feedback persistedFeed = feedService.addFeedback(feedback);
@@ -60,7 +60,7 @@ import com.cg.vegetable.module.Customer;
 	void testviewFeedback() {
 		Feedback feedback1 = new Feedback(5, 10, "good");
 		Feedback feedback2 = new Feedback(6, 10, "good");
-		Customer customer1 = new Customer(5, "Ad", "7890654", "ad@g.com");
+		Customer customer1 = new Customer("Ad", "7890654", "ad@g.com", "password");
 		feedback1.setCustomer(customer1);
 		feedback2.setCustomer(customer1);
 		List<Feedback> FeedbackList = new ArrayList<>();

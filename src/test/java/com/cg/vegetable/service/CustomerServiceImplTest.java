@@ -34,7 +34,7 @@ public class CustomerServiceImplTest {
 	@Disabled
 	void  testAddCustomer() {
 		logger.info("adding customer");
-		Customer customer1 = new Customer(2,"Kavya", "886535214", "abcd@g.com");
+		Customer customer1 = new Customer("Kavya", "886535214", "abcd@g.com","kavya567");
 		Address address = new Address(2, 77, "home", "valasaravakkam", "chennai", "tamilnadu", "600087");
 		List<Address> addrList = new ArrayList<>();
 		addrList.add(address);

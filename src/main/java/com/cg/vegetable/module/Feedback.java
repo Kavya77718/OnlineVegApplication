@@ -12,6 +12,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -41,6 +43,7 @@ public class Feedback {
 	/**
 	 * FeedbackEntity is mapped to CustomerEntity
 	 */
+
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="customer_id", referencedColumnName = "customerId")
 	private Customer customer;

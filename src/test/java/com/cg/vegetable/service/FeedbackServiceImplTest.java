@@ -36,7 +36,7 @@ public class FeedbackServiceImplTest {
 	void  testAddFeedback() {
 		logger.info("adding feedback");
 		Feedback feedback = new Feedback(5, 10, "good");
-		Customer customer1 = new Customer(1,"Kavya", "886535214", "abcd@g.com");
+		Customer customer1 = new Customer("Kavya", "886535214", "abcd@g.com", "password");
 		feedback.setCustomer(customer1);
 		Feedback persistedCust =  feedService.addFeedback(feedback);
 		assertEquals(10, persistedCust.getRating());

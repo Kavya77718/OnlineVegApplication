@@ -50,6 +50,21 @@ public class FeedbackController {
 		Feedback feed = feedServ.addFeedback(fdk);
 		return ResponseEntity.ok(feed);
 	}
+	
+	/**
+	 * This controller is used to create a new or add new feedback and redirects it
+	 * to the service layer
+	 * 
+	 * @param
+	 * @return
+	 */
+	@PostMapping("/feedback/{custId}/{VegId}/{rating}/{comments}")
+	public ResponseEntity<Feedback> addFeedback(@PathVariable("custId") int customerId, @PathVariable("VegId") int vegId,@PathVariable int rating,@PathVariable String comments) {
+		logger.info("adding feedback");
+		Feedback feed = feedServ.addFeedback(customerId,vegId,rating, comments);
+		return ResponseEntity.ok(feed);
+	}
+
 
 	/**
 		 * This controller is used to get all feedback on basis of customerId
