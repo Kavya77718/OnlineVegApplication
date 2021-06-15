@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +13,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.cg.vegetable.exception.OrderNotFoundException;
 import com.cg.vegetable.exception.PaymentNotFoundException;
 import com.cg.vegetable.module.PaymentErrorResponse;
 import com.cg.vegetable.module.Payments;
 import com.cg.vegetable.service.IPaymentService;
 
+@CrossOrigin
 @RestController
+@RequestMapping
 public class PaymentController {
 	//Logger
 	org.apache.logging.log4j.Logger logger = LogManager.getLogger(PaymentController.class);
@@ -84,6 +90,11 @@ public class PaymentController {
 		return payService.deletePaymentById(paymentId);
 	}
 	
+	@PostMapping("/payments/id/{id}")
+	public Payments addPayment1(@PathVariable("id") int orderNo, Payments payment) {
+		logger.info("creating payment by order id from the database");
+		return payService.addPayment1(orderNo, payment);
+	} 
 	
 }
 

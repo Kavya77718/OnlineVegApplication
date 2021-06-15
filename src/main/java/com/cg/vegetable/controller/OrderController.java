@@ -1,5 +1,6 @@
 package com.cg.vegetable.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.vegetable.exception.OrderNotFoundException;
 import com.cg.vegetable.module.OrderDet;
 import com.cg.vegetable.module.OrderErrorResponse;
+import com.cg.vegetable.module.Payments;
 import com.cg.vegetable.service.IOrderService;
 import org.apache.logging.log4j.LogManager;
 
@@ -86,13 +88,13 @@ public class OrderController {
 	
     //using Get Mapping for Getting list of orders by passing date
 	@GetMapping("/order/date/{date}")
-	public ResponseEntity<List<OrderDet>> viewAllOrdersByOrderDate(@PathVariable("date") String orderDate){
+	public ResponseEntity<List<OrderDet>> viewAllOrdersByOrderDate(@PathVariable("date") LocalDate orderDate){
 		logger.info("finding orders by date from the database");
 		if( iord.viewOrderList(orderDate).isEmpty()) {
 			throw new OrderNotFoundException("Order not found with order date "+orderDate);
 		}
 		List<OrderDet> ordDate = iord.viewOrderList(orderDate);
-		return ResponseEntity.ok(ordDate);
+		return ResponseEntity.ok(ordDate); 
 	}
 	
 	//using GetMapping for Getting list of orders
@@ -103,7 +105,7 @@ public class OrderController {
 		return ResponseEntity.ok(listord);
 	}
 	
-	//Delete order by passing orderId
+	//Delete order by passing orderId 
 	@DeleteMapping("/order/{id}")
 	public OrderDet cancelOrder(@PathVariable("id") int orderid) {
 		logger.info("deleting order from the database");
@@ -113,4 +115,9 @@ public class OrderController {
 		return iord.cancelOrder(orderid);
 	}
 	
+	@PostMapping("/order/cartid/{id}")
+	public OrderDet addOrderByCart(@PathVariable("id") int cartId, OrderDet order) {
+		logger.info("creating payment by order id from the database");
+		return iord.addOrderByCart(cartId, order);
+	}
 }

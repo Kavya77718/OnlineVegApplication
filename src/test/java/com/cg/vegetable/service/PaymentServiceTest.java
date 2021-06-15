@@ -1,6 +1,7 @@
 package com.cg.vegetable.service;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -27,13 +28,15 @@ class PaymentServiceTest {
 	//@Disabled
 	public void testsavePaymentDetails() {
 		Payments payById = iservice.findPaymentById(4);
-		payById.setPaymentType("PhonePe");
+		payById.setTransactionMode("PhonePe");
 		payById.setShippingFee(30.00);
 		payById.setTotalPrice(130.00);
+		payById.setTransactionDate(LocalDate.of(2021, 05, 06));
 		Payments payupdate = iservice.save(payById);
-		assertEquals("PhonePe",payupdate.getPaymentType());
+		assertEquals("PhonePe",payupdate.getTransactionMode());
 		assertEquals(30.00, payupdate.getShippingFee());
 		assertEquals(130.00, payupdate.getTotalPrice());
+		assertEquals(LocalDate.of(2021, 05, 06), payupdate.getTransactionDate());
 		logger.info(payById);
 		logger.info("Updated payment successfully");
 	}
@@ -49,6 +52,7 @@ class PaymentServiceTest {
 		logger.info("found payment successfully");
 		
 	}
+	
 	
 	//testing whether it is fetching list of all the payments from the database or not
 	@Test
@@ -66,7 +70,7 @@ class PaymentServiceTest {
 	void testdeletePaymentById() {
 		Payments persistedPay = iservice.deletePaymentById(1);
 		assertEquals(1,persistedPay.getPaymentId());
-		assertEquals("Cash On Delivery",persistedPay.getPaymentType());
+		assertEquals("Cash On Delivery",persistedPay.getTransactionMode());
 		assertEquals(2,persistedPay.getItemTotal());
 		logger.info(persistedPay);
 		logger.info("deleted order successfully");
