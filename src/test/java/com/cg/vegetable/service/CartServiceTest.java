@@ -29,15 +29,14 @@ class CartServiceTest {
 	 * This below function is used to Test the method AddtoCart and redirects to the
 	 * cart service
 	 */
-	@Test
-	@Disabled
-	void testaddToCart() {
-		Cart cart = new Cart(3);
-		Cart persistedCust = ic.addToCart(cart);
-		assertEquals(3, persistedCust.getCartId());
-		logger.info("Added to the cart successfully" + cart);
-
-	}
+	
+	  @Test
+	   @Disabled 
+	   void testaddToCart() { 
+	   Cart cart = new Cart(3,50); 
+	   Cart persistedCust= ic.addToCart(cart); assertEquals(3, persistedCust.getCartId());
+	  logger.info("Added to the cart successfully" + cart);
+	  }
 
 	/**
 	 * This below function is used to Test the method ViewAllItems and redirects to

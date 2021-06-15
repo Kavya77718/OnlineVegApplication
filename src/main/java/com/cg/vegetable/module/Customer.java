@@ -1,5 +1,4 @@
 package com.cg.vegetable.module;
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -21,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Customer {
-	
+
 	/**
 	 * Creating instance variable for the class Customer Entity
 	 */
@@ -31,30 +30,40 @@ public class Customer {
 	@NotEmpty(message = "Please enter your name to proceed")
 	private String name;
 	@NotEmpty(message = "Please enter your mobile number to proceed")
-	@Size(min=10 , max=10, message = "Invalid mobileNumber")
+	@Size(min = 10, max = 10, message = "Invalid mobileNumber")
 	private String mobileNumber;
 	@NotEmpty(message = "Please enter your email Id to proceed")
 	@Email(message = "Invalid Email")
 	private String emailId;
+
 	@NotEmpty
 	private String customerPassword;
 	/**
 	 * CustomerEntity is mapped to AddressEntity
 	 */
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="cust_id")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cust_id")
 	private List<Address> address;
+
 	
 	/*@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cart_Id", referencedColumnName = "cartId")
 	private Cart cart;
+  
+	// One to One Mapping
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cart_Id", referencedColumnName = "cartId")
+	private Cart cart;
+
+
 	/**
 	 * Creating no arg constructor.
 	 */
 	public Customer() {
 	}
-	
+
 	/**
 	 * Creating arg constructor.
 	 * @param customerPassword 
@@ -66,7 +75,7 @@ public class Customer {
 		this.emailId = emailId;
 		this.customerPassword=customerPassword;
 	}
-	
+
 	
 	public Customer(int customerId) {
 		this.customerId = customerId;
@@ -95,8 +104,6 @@ public class Customer {
 		this.name = name;
 	}
 
-	
-
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -104,7 +111,7 @@ public class Customer {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	
+
 	public String getEmailId() {
 		return emailId;
 	}
@@ -121,6 +128,7 @@ public class Customer {
 		this.address = address2;
 	}
 
+
 	public String getCustomerPassword() {
 		return customerPassword;
 	}
@@ -129,9 +137,19 @@ public class Customer {
 	}
 
 
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+
 	/**
 	 * Creating toString
 	 */
+
 	
 	@Override
 	public String toString() {
@@ -142,6 +160,4 @@ public class Customer {
 
 	
 }
-
-
 
