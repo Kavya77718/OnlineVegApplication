@@ -46,13 +46,13 @@ public class OrderServiceImpl implements IOrderService{
 	}
 	
 	//To update order by id called from the controller class and send back to the controller
-	@Override
+	/*@Override
 	public OrderDet updateOrderDetails(OrderDet order) {
 		logger.info("updating order by id");
 		OrderDet ord = iordr.findById(order.getOrderNo()).get();
 		ord.setTotalAmount(order.getTotalAmount());
 		return iordr.save(order);	
-	}
+	}*/
 	
 	//To list all the orders by customer id called from the controller class and send back to the controller
 	@Override

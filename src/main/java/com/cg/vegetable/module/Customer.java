@@ -1,15 +1,18 @@
 package com.cg.vegetable.module;
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Customer Entity
@@ -17,34 +20,41 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Customer {
-	
+
 	/**
 	 * Creating instance variable for the class Customer Entity
 	 */
 	@Id
+	@GeneratedValue
 	private int customerId;
 	@NotEmpty(message = "Please enter your name to proceed")
 	private String name;
 	@NotEmpty(message = "Please enter your mobile number to proceed")
-	@Size(min=10 , max=10, message = "Invalid mobileNumber")
+	@Size(min = 10, max = 10, message = "Invalid mobileNumber")
 	private String mobileNumber;
 	@NotEmpty(message = "Please enter your email Id to proceed")
 	@Email(message = "Invalid Email")
 	private String emailId;
-	
+
 	/**
 	 * CustomerEntity is mapped to AddressEntity
 	 */
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="cust_id")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cust_id")
 	private List<Address> address;
-	
+
+	// One to One Mapping
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cart_Id", referencedColumnName = "cartId")
+	private Cart cart;
+
 	/**
 	 * Creating no arg constructor.
 	 */
 	public Customer() {
 	}
-	
+
 	/**
 	 * Creating arg constructor.
 	 */
@@ -54,7 +64,7 @@ public class Customer {
 		this.mobileNumber = mobileNumber;
 		this.emailId = emailId;
 	}
-	
+
 	public Customer(int customerId) {
 		this.customerId = customerId;
 	}
@@ -82,8 +92,6 @@ public class Customer {
 		this.name = name;
 	}
 
-	
-
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -91,7 +99,7 @@ public class Customer {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	
+
 	public String getEmailId() {
 		return emailId;
 	}
@@ -108,17 +116,22 @@ public class Customer {
 		this.address = address2;
 	}
 
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 	/**
 	 * Creating toString
 	 */
+
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", mobileNumber=" + mobileNumber + ", emailId="
-				+ emailId + ", address=" + address + "]";
+				+ emailId + ", address=" + address + ", cart=" + cart + "]";
 	}
-
-	
-}
-
 
 }

@@ -29,7 +29,7 @@ public class OrderDet {
 	private double totalAmount;
 	private LocalDate orderDate = LocalDate.now();
 	private String status;
-	
+
 	//OneToOne mapping with CartEntity
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
@@ -37,6 +37,15 @@ public class OrderDet {
 	private Cart cartId;
 	
 	//ManyToOne mapping with customer
+
+	//OneToMany mapping 
+	/*@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="Order_No")
+	private List<Vegetable> vegList;*/
+	
+	//ManyToOne mapping
+
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id",referencedColumnName = "customerId")

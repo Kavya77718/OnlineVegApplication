@@ -30,6 +30,7 @@ public class Payments {
 	private double totalPrice;
 	private String transactionStatus;
 	private LocalDate transactionDate = LocalDate.now();
+	private LocalDate transactionDate;
 
 	//OneToOne mapping
 	@JsonIgnore

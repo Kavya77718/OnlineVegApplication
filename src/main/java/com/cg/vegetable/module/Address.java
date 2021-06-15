@@ -28,8 +28,6 @@ public class Address {
 	@NotEmpty(message = "Pincode cannot be empty")
 	private String pincode;
 
-	public Address(int id, int flatNo, String buildingName, String area, String location, String state,
-			String pincode) {
 	/**
 	 * Creating no arg constructor.
 	 */
