@@ -2,6 +2,7 @@ package com.cg.vegetable.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -30,10 +31,10 @@ public class CustomerServiceImplTest {
 	 * This below function is used to test the testAddCustomer and to check whether it adds customer to the database
 	 */
 	@Test
-	@Disabled
+	//@Disabled
 	void  testAddCustomer() {
 		logger.info("adding customer");
-		Customer customer1 = new Customer(2,"Kavya", "886535214", "abcd@g.com");
+		Customer customer1 = new Customer("Kavya", "886535214", "abcd@g.com","xxx12");
 		Address address = new Address(2, 77, "home", "valasaravakkam", "chennai", "tamilnadu", "600087");
 		List<Address> addrList = new ArrayList<>();
 		addrList.add(address);
@@ -61,7 +62,7 @@ public class CustomerServiceImplTest {
 	 */
 
 	@Test
-	@Disabled
+	//@Disabled
 	void testViewCustomerbyId() {
 		logger.info("getting customer by id");
 		Customer cust=new Customer();
@@ -71,16 +72,16 @@ public class CustomerServiceImplTest {
 		assertEquals("Kavya",persistedCust.getName());
 	}
 
-
+/*
 	@Test
-	@Disabled
+	//@Disabled
 	void testRemoveCustomer() {
 		Customer customer1 = new Customer(1);
 		Customer persistedCust = custService.removeCustomer(customer1);
 		assertEquals(1, persistedCust.getCustomerId());
 		assertEquals("Monisha", persistedCust.getName());
 	}
-
+*/
 
 	
 	/**
@@ -88,7 +89,7 @@ public class CustomerServiceImplTest {
 	 *  from the database
 	 */
 	@Test
-	@Disabled
+	//@Disabled
 	void testDeleteCustomerId() {
 		logger.info("deleting customer by id");
 		Customer persistedCust = custService.deleteCustomerbyId(2);
@@ -101,7 +102,7 @@ public class CustomerServiceImplTest {
 	 */
 
 	@Test
-	@Disabled
+	//@Disabled
 	void testUpdateCustomer() {
 		logger.info("update customer by id");
 		Customer customer1 = new Customer();
@@ -123,7 +124,7 @@ public class CustomerServiceImplTest {
 	 * from the database
 	 */
   @Test
-	@Disabled
+	//@Disabled
 	void testViewCustomerList() {
 		logger.info("getting list of customers by passing location");
 		List<Customer> cust1 = custService.viewCustomerList("chennai");

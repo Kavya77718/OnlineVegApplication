@@ -32,14 +32,14 @@ public class BillingDetails {
 	@GeneratedValue
 	private int billingId;
 
-	//@JsonIgnore
+	/*//@JsonIgnore
 	@OneToOne(targetEntity = OrderDet.class, cascade = CascadeType.ALL)
 	/**
 	 * BillingEntity is mapped to OrderEntity
 	 * 
-	 */
+	
 	@JoinColumn(name = "order_id", referencedColumnName = "orderNo")
-	private OrderDet order;
+	private OrderDet order; */
 
 	//@JsonIgnore
 	/**
@@ -48,6 +48,8 @@ public class BillingDetails {
 	 */
 	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "customerName", referencedColumnName = "Name")
+	//@JoinColumn(name = "", referencedColumnName = "Name")
+	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
 	//@JoinColumn(name = "", referencedColumnName = "Name")
 	private Customer customer;
 	

@@ -38,9 +38,9 @@ public class CustomerServiceMockitoTest {
 	 * This below function is Mockito test case used to test the testAddCustomer and to check whether it adds customer to the database
 	 */
 	@Test
-    //@Disabled
+    @Disabled
 	void testAddCustomer() {
-		Customer customer = new Customer(1, "Kavya", "886535214", "abcd@g.com");
+		Customer customer = new Customer( "Kavya", "886535214", "abcd@g.com","xxx12");
 		Mockito.when(custRep.save(customer)).thenReturn(customer);
 		Customer persistedCust = custService.addCustomer(customer);
 		assertEquals(1, persistedCust.getCustomerId());
@@ -53,8 +53,8 @@ public class CustomerServiceMockitoTest {
 	@Test
     //@Disabled
 	void testViewList() {
-		Customer customer1 = new Customer(7, "Ad", "7890654", "ad@g.com");
-		Customer customer2 = new Customer(8, "rian", "123456", "rian@g.com");
+		Customer customer1 = new Customer( "Ad", "7890654", "ad@g.com","yyy12");
+		Customer customer2 = new Customer( "rian", "123456", "rian@g.com","str12");
 		Address address1 = new Address(7, 88, "el", "kk nagar", "chennai", "TN", "600088");
 		Address address2 = new Address(8, 89, "el", "kk nagar", "chennai", "TN", "600088");
 		List<Address> addrList = new ArrayList<>();
@@ -75,7 +75,7 @@ public class CustomerServiceMockitoTest {
 	@Test
     //@Disabled
 	void testDeleteCustomerbyId() {
-		Customer customer = new Customer(1, "tommy", "951771122", "tom@gmail.com");
+		Customer customer = new Customer( "tommy", "951771122", "tom@gmail.com","str13");
 		Mockito.when(custRep.findById(1)).thenReturn(Optional.of(customer));
 		custRep.deleteById(1);
 		Customer persistedCust = custService.deleteCustomerbyId(1);
@@ -90,7 +90,7 @@ public class CustomerServiceMockitoTest {
 	@Test
     //@Disabled
 	void testViewCustomerbyId() {
-		Customer customer = new Customer(1, "jen", "951771122", "tom@gmail.com");
+		Customer customer = new Customer( "jen", "951771122", "tom@gmail.com","str14");
 		Mockito.when(custRep.findById(1)).thenReturn(Optional.of(customer));
 		Customer persistedCust = custService.viewCustomerbyId(1);
 		assertEquals("jen", persistedCust.getName());
@@ -102,7 +102,7 @@ public class CustomerServiceMockitoTest {
 	@Test
 	// @Disabled
 	void testUpdateCustomer() {
-		Customer customer1 = new Customer(1, "minion", "951771122", "tom@gmail.com");
+		Customer customer1 = new Customer("minion", "951771122", "tom@gmail.com","str15");
 		Mockito.when(custRep.findById(1)).thenReturn(Optional.of(customer1));
 		Mockito.when(custRep.save(customer1)).thenReturn(customer1);
 		Customer persistedCust = custService.updateCustomer(customer1, 1);
@@ -115,8 +115,8 @@ public class CustomerServiceMockitoTest {
 	@Test
 	// @Disabled
 	void testViewAllCustomers() {
-		Customer customer1 = new Customer(1,"son", "951771122", "tom@gmail.com");
-		Customer customer2 = new Customer(2, "lee", "951998122", "jerry@gmail.com");
+		Customer customer1 = new Customer("son", "951771122", "tom@gmail.com","str16");
+		Customer customer2 = new Customer("lee", "951998122", "jerry@gmail.com","str17");
 		List<Customer> customerList = new ArrayList<>();
 		customerList.add(customer1);
 		customerList.add(customer2);

@@ -33,6 +33,7 @@ public class VegBillController {
 	/**
 	 * AutoWiring the IBillingService class to call down the service
 	 */
+	
 	@Autowired
 	IBillingService bs;
 
@@ -42,12 +43,12 @@ public class VegBillController {
 	 */
 
 	// addBill
-	/*@PostMapping("/billing")
+	@PostMapping("/billing")
 	public ResponseEntity<BillingDetails> addBill(@Valid @RequestBody BillingDetails bill) {
 		logger.info("Adding Bill in database" + bill);
 		BillingDetails billing = bs.addBill(bill);
 		return ResponseEntity.ok(billing);
-	}*/
+	}
 
 	/**
 	 * This below function is used to get all the bills and redirects to the billing

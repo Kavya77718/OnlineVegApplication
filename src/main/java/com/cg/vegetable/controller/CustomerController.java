@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,10 +48,22 @@ public class CustomerController {
 	 */
 	@PostMapping("/customer")
 	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) {
+		logger.info("Adding customer in database");
+		Customer cust=custService.findCustomerByEmailId(customer.getEmailId());
+		if(cust == null) {
+			custService.addCustomer(customer);
+			return new ResponseEntity<>(customer, HttpStatus.OK);
+		}else {
+			cust=null;
+		}
+		return  new ResponseEntity<>(cust, HttpStatus.ALREADY_REPORTED);
+	}
+	/*@PostMapping("/customer")
+	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) {
 		logger.info("adding customer");
 		Customer cust = custService.addCustomer(customer);
 		return ResponseEntity.ok(cust);
-	}
+	}*/
 
 	/**
 	 * This controller is used to return and list all the customer found in the

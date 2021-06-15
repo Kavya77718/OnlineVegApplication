@@ -98,5 +98,9 @@ public class CustomerServiceImpl implements ICustomerService {
 		cus.setAddress(customer.getAddress());
 		return custRepo.save(cus);
 	}
+	@Override
+	public Customer findCustomerByEmailId(String emailId) {
+		return custRepo.findCustomerByEmailId(emailId);
+	}
 
 }
