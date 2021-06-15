@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,13 +29,18 @@ public class Payments {
 	private double shippingFee;
 	private double totalPrice;
 	private String transactionStatus;
+	private LocalDate transactionDate = LocalDate.now();
 	private LocalDate transactionDate;
 
 	//OneToOne mapping
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Order_Id")
 	private OrderDet orderNo;
 
+	void Payments() {
+		
+	}
 	//parameterized constructor
 	public Payments(long paymentId, String transactionMode, double itemTotal, double shippingFee, double totalPrice, String transactionStatus, LocalDate transactionDate) {
 		super();
@@ -45,5 +53,6 @@ public class Payments {
 		this.transactionDate=transactionDate;
 		
 	}
+	
 
 }

@@ -7,7 +7,10 @@ import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.vegetable.exception.OrderNotFoundException;
+import com.cg.vegetable.module.OrderDet;
 import com.cg.vegetable.module.Payments;
+import com.cg.vegetable.repository.IOrderRepository;
 import com.cg.vegetable.repository.IPaymentRepository;
 
 @Service
@@ -19,6 +22,9 @@ public class PaymentServiceImpl implements IPaymentService{
 	//AutoWiring the OrderServiceTest class to call down the service
 	@Autowired
 	IPaymentRepository payRepo;
+	
+	@Autowired
+	IOrderRepository ordRepo;
 
 	@Override
 	public Payments addPayment(Payments payment) {
@@ -58,5 +64,16 @@ public class PaymentServiceImpl implements IPaymentService{
 		payRepo.deleteById(paymentId);
 		return delPay.get();
 	}
+
+	@Override
+	public Payments addPayment1(int orderNo, Payments payment) {
+		Optional<OrderDet> pay = ordRepo.findById(orderNo);
+		if (pay.isPresent()) {
+			return payRepo.save(payment);
+		}
+		return null;
+	}
+
+    
 	
 }
