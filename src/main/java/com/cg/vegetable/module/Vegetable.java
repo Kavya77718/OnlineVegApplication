@@ -27,6 +27,7 @@ public class Vegetable {
 	private String type;
 	private double price;
 	private int quantity;
+	private String description;
 }
 
 	

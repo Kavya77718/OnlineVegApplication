@@ -32,7 +32,7 @@ class CartServiceTest {
 	@Test
 	@Disabled
 	void testaddToCart() {
-		Cart cart = new Cart(3);
+		Cart cart = new Cart(3,1);
 		Cart persistedCust = ic.addToCart(cart);
 		assertEquals(3, persistedCust.getCartId());
 		logger.info("Added to the cart successfully" + cart);

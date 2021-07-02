@@ -26,7 +26,7 @@ public class Payments {
 	private double shippingFee;
 	private double totalPrice;
 	private String transactionStatus;
-	private LocalDate transactionDate;
+	private LocalDate transactionDate = LocalDate.now();
 
 	//OneToOne mapping
 	@OneToOne(cascade = CascadeType.ALL)

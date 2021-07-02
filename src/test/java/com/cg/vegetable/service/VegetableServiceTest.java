@@ -74,7 +74,7 @@ class VegetableServiceTest {
 	@Test
 	@Disabled
 	void testCreateVegetable() {
-		Vegetable vegetable = new Vegetable(10, "Cucumber", "Stem", 80, 25);
+		Vegetable vegetable = new Vegetable(10, "Cucumber", "Stem", 80, 25,"");
 		Vegetable persistedveg = es.save(vegetable);
 		assertEquals(10, persistedveg.getVegId());
 		assertEquals("Cucumber", persistedveg.getName());

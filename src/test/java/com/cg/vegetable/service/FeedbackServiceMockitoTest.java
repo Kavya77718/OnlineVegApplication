@@ -80,7 +80,7 @@ import com.cg.vegetable.module.Customer;
 	void testViewAllFeedbacks() {
 		Feedback feedback1 = new Feedback(5, 10, "good");
 		Feedback feedback2 = new Feedback(6, 10, "good");
-		Vegetable vegetable = new Vegetable(1, "beans", "stem",70,60);
+		Vegetable vegetable = new Vegetable(1, "beans", "stem",70,60,"");
 		feedback1.setVegetable(vegetable);;
 		feedback2.setVegetable(vegetable);
 		List<Feedback> FeedbackList = new ArrayList<>();

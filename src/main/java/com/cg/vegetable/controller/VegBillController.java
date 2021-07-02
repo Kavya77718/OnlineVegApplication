@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.vegetable.billdto.BillRequest;
 import com.cg.vegetable.exception.VegBillingIdNotFoundException;
 import com.cg.vegetable.module.BillingDetails;
 import com.cg.vegetable.module.VegErrorResponse;

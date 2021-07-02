@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.vegetable.controller.CustomerController;
+import com.cg.vegetable.module.Cart;
 import com.cg.vegetable.module.Customer;
+import com.cg.vegetable.repository.ICartRepository;
 import com.cg.vegetable.repository.ICustomerRepository;
+import com.cg.vegetable.repository.IVegetableRepository;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService {
@@ -24,6 +27,15 @@ public class CustomerServiceImpl implements ICustomerService {
 	 */
 	@Autowired
 	ICustomerRepository custRepo;
+	
+	@Autowired
+	ICartRepository cartRepo;
+	
+	@Autowired
+	ICartService cartServ;
+	
+	@Autowired
+	IVegetableRepository vegrepo;
 
 	/*
 	 * This below function addCustomer is used to create new customer and redirects
@@ -34,6 +46,19 @@ public class CustomerServiceImpl implements ICustomerService {
 		logger.info("adding customer");
 		return custRepo.save(customer);
 	}
+	/*@Override
+	public Customer addCustomer(Customer customer) {
+		logger.info("adding customer");
+	Optional<Customer> opt = Optional.ofNullable(custRepo.findCustomerByEmailId(customer.getEmailId()));
+	if(opt.isPresent()) {
+		return null;
+	}
+	Customer cust=custRepo.save(customer);
+	int id= cust.getCustomerId();
+	Cart cart=cartServ.addCartToCustomer(id);
+	cartRepo.save(cart);
+	return cust;
+	}*/
 
 	/*
 	 * This below function findAllCustomer is used to get all the customers and

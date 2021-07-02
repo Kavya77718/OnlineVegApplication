@@ -13,6 +13,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Customer Entity
  */
@@ -34,7 +36,7 @@ public class Customer {
 	@NotEmpty(message = "Please enter your email Id to proceed")
 	@Email(message = "Invalid Email")
 	private String emailId;
-	@NotEmpty
+    @Size(min=8, max=10, message = "invalid password")
 	private String customerPassword;
 	/**
 	 * CustomerEntity is mapped to AddressEntity
@@ -43,6 +45,10 @@ public class Customer {
 	@JoinColumn(name="cust_id")
 	private List<Address> address;
 	
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cart_Id", referencedColumnName = "cartId")
+	private Cart cart;
 	/**
 	 * Creating no arg constructor.
 	 */
@@ -122,17 +128,22 @@ public class Customer {
 		this.customerPassword = customerPassword;
 	}
 
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	/**
 	 * Creating toString
 	 */
-	
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", mobileNumber=" + mobileNumber + ", emailId="
-				+ emailId + ", customerPassword=" + customerPassword + ", address=" + address + "]";
+				+ emailId + ", customerPassword=" + customerPassword + ", address=" + address + ", cart=" + cart + "]";
 	}
-
 
 	
 }

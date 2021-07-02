@@ -58,10 +58,10 @@ public class FeedbackController {
 	 * @param
 	 * @return
 	 */
-	@PostMapping("/feedback/{custId}/{VegId}/{rating}/{comments}")
-	public ResponseEntity<Feedback> addFeedback(@PathVariable("custId") int customerId, @PathVariable("VegId") int vegId,@PathVariable int rating,@PathVariable String comments) {
+	@PostMapping("/feedback/{custId}/{rating}/{comments}")
+	public ResponseEntity<Feedback> addFeedback(@PathVariable("custId") int customerId,@PathVariable int rating,@PathVariable String comments) {
 		logger.info("adding feedback");
-		Feedback feed = feedServ.addFeedback(customerId,vegId,rating, comments);
+		Feedback feed = feedServ.addFeedback(customerId,rating, comments);
 		return ResponseEntity.ok(feed);
 	}
 

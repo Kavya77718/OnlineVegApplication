@@ -52,7 +52,7 @@ public class Feedback {
 	 * FeedbackEntity is mapped to vegetableEntity
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="vegetables_id", referencedColumnName = "vegId")
+	//@JoinColumn(name="vegetables_id", referencedColumnName = "vegId")
 	private Vegetable vegetable;
 			
 	/**

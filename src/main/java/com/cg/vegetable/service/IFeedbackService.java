@@ -12,6 +12,7 @@ public interface IFeedbackService {
 		public Feedback deleteFeedbackById(int feedbackId);
 		public List<Feedback> findAllFeedback();
 		
-		Feedback addFeedback(int customerId, int vegId, int Rating, String Comment);
+		//Feedback addFeedback(int customerId, int vegId, int Rating, String Comment);
+		Feedback addFeedback(int customerId, int rating, String comments);
 	}
 

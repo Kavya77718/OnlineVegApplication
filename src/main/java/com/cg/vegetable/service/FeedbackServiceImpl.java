@@ -44,17 +44,12 @@ public class FeedbackServiceImpl implements IFeedbackService {
 		return feedRepo.save(fdk);
 	}
 
-	
-
 	@Override
-	public Feedback addFeedback(int customerId, int vegId, int rating,String comments) {
+	public Feedback addFeedback(int customerId, int rating,String comments) {
 		logger.info("Adding Feedback");
 		Feedback fdk = new Feedback();
 		Optional<Customer> cust = customerRepo.findById(customerId);
         fdk.setCustomer(cust.get());	
-        Optional<Vegetable> veg = vegRepo.findById(vegId);
-        fdk.setVegetable(veg.get());
-		logger.info("adding feedback");
 		fdk.setRating(rating);
 		fdk.setComments(comments);
 		return feedRepo.save(fdk);
